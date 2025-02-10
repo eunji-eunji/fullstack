@@ -1,0 +1,6 @@
+\\192.168.0.10
+
+vscode 확장자
+-auto rename tag : 자동으로 종료 확장자 변경
+-live server
+-open in browser
