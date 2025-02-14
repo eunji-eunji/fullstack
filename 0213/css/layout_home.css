@@ -34,29 +34,18 @@ header ul {
     margin: 0 auto;
 }
 
-/* 여기 다시 보기 */
-
-header ul li{
-    height: 40px;
-}
-
 header ul li a {
     display: block;
-    width: 180px;
-    /* height: 40px; */
-    color: #000;
+    text-decoration: none;
+    height: 40px;
     text-align: center;
-    /* line-height: 40px; */
-    /* text-decoration: none; */
-
+    line-height: 40px;
+    color: #000;
 }
-
-/* 여기까지 */
 
 header ul li a:hover{
     background-color: #555;
 }
-
 
 section {
     width: 800px;

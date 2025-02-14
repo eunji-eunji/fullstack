@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.back {
+    width: 100%;
+    height: 100vh;
+}
+
+.back1 {
+    background-image: url(../images/b1.jpg);
+    background-color: rgb(177, 34, 89);
+    
+    /* background-repeat: no-repeat;
+    background-repeat: repeat-y; */
+    /* no-repeat : 반복X,  repeat-y: y축으로만 반복, repeat-x: x축으로만 반복 */
+    /* background-size: cover; */
+    /* 화면 크기에 상관없이 화면에 맞춤 */
+}
+
+.back2 {
+    background-color: rgb(24, 99, 165);
+    background-image: url(../images/b2.jpg);
+}
+
+.back3 {
+    background-color: rgb(161, 17, 125);
+    background-image: url(../images/b3.jpg);
+    background-attachment: fixed;
+}
+
+.back4 {
+    background-color: rgb(192, 204, 28);
+    background-image: url(../images/b4.jpg);
+}
+
+.back5 {
+    background-color: rgb(35, 202, 124);
+    background-image: url(../images/b5.jpg);
+}
+.back6{
+    background-image: url(../images/cat4.jpg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    /* 배경이 하나만 들어갈 때 배경위치. 좌우에서 50%, 위에서 30% */
+    background-color: aqua;
+}
+.back7{
+    background: red url(../images/b1.jpg) no-repeat 50% 50%;
+    /* background 한 번에 쓰기.
+    색 위치 반복 포지션 */
+}

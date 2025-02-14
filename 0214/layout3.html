@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            width: 1200px;
+            height: 200px;
+            background-color: orange;
+        }
+
+        section {
+            float: left;
+            width: 900px;
+            height: 500px;
+            background-color: green;
+        }
+
+        aside {
+            float: left;
+            width: 300px;
+            height: 500px;
+            background-color: yellow;
+        }
+
+        footer {
+            /* margin: 50px 0 0 0; */
+            /* clear:both로 줄바꿈만 했을 뿐 실제 위치는 헤더 밑이기 때문에 마진 700을 줘야 됨. */
+            /* clear: both; */
+            /* 줄바꿈처리. 별로 안 좋음. p239
+            float:left, float:right 둘 다 줄바꿈 함. */
+            width: 1200px;
+            height: 70px;
+            background-color: skyblue;
+        }
+        .main{
+            width: 1200px;
+            /* height: 500px; */
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>헤더</header>
+        <div class="main">
+            <section>섹션</section>
+            <aside>사이드</aside>
+        </div>
+        <footer>푸터</footer>
+    </div>
+</body>
+
+</html>
