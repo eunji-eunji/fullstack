@@ -23,19 +23,20 @@ nav{
 nav ul{
     list-style: none;
 }
-nav ul li{
-    margin-top: 8px;
-    margin-left: 50px;
+nav>ul>li{
     float: left;
 }
 nav ul li a{
     display: block;
     text-decoration: none;
-    width: 160px;
+    /* width: 25%; */
     height: 40px;
     text-align: center;
     line-height: 40px;
     color: black;
+}
+nav>ul>li>ul>li{
+    width: 25%;
 }
 nav ul li a:hover{
     background-color: #f46075;
