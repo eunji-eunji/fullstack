@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+        }
+
+        .box1 {
+            /* position: static; */
+            /* ↑ 아무것도 안 써있다면 위의 포지션이 기본. 생략 가능. */
+            background-color: aliceblue;
+        }
+
+        .box2 {
+            background-color: antiquewhite;
+        }
+
+        .box3 {
+            position: relative;
+            top:50px;
+            left:50px;
+            /*  position: relative;
+            1. left, top 속성으로 이동. 
+            2. 원래 있던 위치에서 이동
+            3. 자리값이 있음.
+            4. absolute로 지정된 요소의 부모 요소 역할.
+            5. 다음에 오는 요소에 영향을 미치지 않음.(box4를 이동시키지 않음)
+            */
+            /* position이 있는 애가 맨 위로 옴.
+            z-index: 1; -> 기본=0임. 1인 경우 다른 것들보다 위로 옴. */
+            background-color: blue;
+        }
+
+        .box4 {
+            position: relative;
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box1">box1</div>
+    <div class="box box2">box2</div>
+    <div class="box box3">box3</div>
+    <div class="box box4">box4</div>
+</body>
+
+</html>
