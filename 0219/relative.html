@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+        }
+
+        .box1 {
+            background-color: aliceblue;
+        }
+
+        .box2 {
+            background-color: antiquewhite;
+        }
+
+        .box3 {
+            position: relative;
+            /* 1. 이동해도 원래 본인 자리는 비어 있음. -> 자리값이 있다. 
+            2. left, top으로 이동 가능
+            3. box4에 영향을 미치지 않는다.
+            4. position: absolute의 부모가 되기도 한다.
+            5. 기준위치가 원래 있던 곳임. (그래서 relative로 잘 이동하지 않음)*/
+            
+            background-color: blue;
+            left: 50px;
+            top: 50px;
+        }
+
+        .box4 {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box1">box1</div>
+    <div class="box box2">box2</div>
+    <div class="box box3">box3</div>
+    <div class="box box4">box4</div>
+</body>
+
+</html>
