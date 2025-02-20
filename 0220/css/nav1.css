@@ -1,0 +1,41 @@
+*{margin:0;padding:0;}
+ul{list-style: none;}
+a{text-decoration: none; color: #333;}
+/* float:left 하면 margin:0 auto (좌우정렬)이 안 먹음. */
+
+nav{
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    background-color: #ccc;
+    position: relative;
+    /* transition: all 0.3s; */
+}
+
+nav>ul{
+    width: 100%;
+    background-color: #ccc;
+    position: absolute;
+    height: 70px;
+    overflow: hidden;
+    transition: all 0.3s;
+
+}
+nav>ul:hover {
+    height: 370px;
+}
+
+nav>ul>li{
+    /* float: left; */
+    display: inline-block;
+    /* 인라인 요소처럼 옆으로 나열되며, text-align:center도 적용됨. */
+}
+
+nav ul li a{
+    display: block;
+    padding: 25px;
+}
+
+nav ul li a:hover{
+    color: red;
+}
