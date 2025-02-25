@@ -14,8 +14,16 @@
         var result;
         if(avg>=60){
             if(html<40){
-                result='html 40점 미만 불합격'
+                result='html 40점 미만 불합격';
+            }else if(css<40){
+                result='css 40점 미만 불합격';
+            }else if(js<40){
+                result='js 40점 미만 불합격';
+            }else{
+                result='평균'+avg+'점 합격';
             }
+        }else{
+            result='평균 60점 미만 불합격';
         }
         document.write(result);
     </script>
