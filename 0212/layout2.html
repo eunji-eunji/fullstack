@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0;}
+        .container{
+            width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        header{
+            height: 200px; background-color: darkgreen;
+        }
+        .logo{
+            width: 200px;
+            height: 150px;
+            background-color: yellowgreen;
+            float: left;
+            margin-top: 25px;
+            margin-left: 20px;
+            text-align: center;
+            line-height: 150px;
+            /* 높이 가운데 정렬. 높이와 같은 값. 단 한 줄일 경우만 */
+        }
+        nav{
+            width: 800px;
+            height: 80px;
+            background-color: yellowgreen;
+            float: left;
+            margin-top: 95px;
+            margin-left: 70px;
+        }
+        nav ul{
+            list-style: none;
+            width: 600PX;
+            height: 50px;
+            /* background-color: yellow; */
+            margin-left: auto;
+            margin-right: auto;
+            margin-top:15px;
+        }
+        nav ul li{
+            float: left;
+        }
+
+        nav ul li a{
+            color:#333;
+            text-decoration: none;
+            display: block;
+            /* a는 인라인요소. 넓이X 높이X */
+            width: 100px; height: 30px;
+            text-align: center;
+            line-height: 30px;
+            /* background-color: blueviolet; */
+            margin-top: 10px;
+            margin-right: 20px;
+        }
+        section{
+            margin-top: 10px;
+            height: 500px; background-color: darkgreen;
+        }
+
+        section .left_box{
+            height:450px;
+            width: 780px;
+            background-color: darkgreen;
+            float: left;
+            margin-top: 25px;
+            margin-left: 20px;
+            text-align: center;
+            line-height: 450px;
+        }
+
+        section .left_box .left1{
+            height:450px;
+            width: 370px;
+            background-color: yellowgreen;
+            float: left;
+            text-align: center;
+            line-height: 450px;
+        }
+
+        section .left_box .left2{
+            height:450px;
+            width: 370px;
+            background-color: yellowgreen;
+            float: right;
+            text-align: center;
+            line-height: 450px;
+        }
+
+        section .right_box{
+            height:450px;
+            width: 350px;
+            background-color: darkgreen;
+            float: right;
+            margin-top: 25px;
+            margin-right: 20px;
+            text-align: center;
+            line-height: 450px;
+        }
+
+        section .right_box .top{
+            height:200px;
+            width: 350px;
+            background-color: yellowgreen;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        section .right_box .bottom{
+            height:200px;
+            width: 350px;
+            background-color: yellowgreen;
+            margin-top: 50px;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        footer{
+            margin-top: 10px;
+            padding-top: 10px;
+            height: 100px; background-color: darkgreen;
+        }
+        
+        footer .footer_t{
+            border-top:1px solid transparent;
+            width: 550px;
+            height: 40px;
+            line-height: 40px;
+            /* 높이와 line-height을 똑같이 쓰면 높이 가운데 정렬 됨. */
+            background-color: yellowgreen;
+            margin-top: 0px;
+            margin-left: 150px;
+        }
+
+        footer .footer_b{
+            border-top:1px solid transparent;
+            width: 550px;
+            height: 40px;
+            line-height: 40px;
+            background-color: yellowgreen;
+            margin-top: 5px;
+            margin-left: 150px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1 class="logo"><a href="#">LOGO</a></h1>
+        <nav>
+            <ul>
+                <li><a href="#">MENU01</a></li>
+                <li><a href="#">MENU02</a></li>
+                <li><a href="#">MENU03</a></li>
+                <li><a href="#">MENU04</a></li>
+                <li><a href="#">MENU05</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <article class="left_box">
+            <div class="left1">콘텐츠 그룹01</div>
+            <div class="left2">콘텐츠 그룹02</div>
+        </article>
+        <article class="right_box">
+            <div class="top">주요 기사</div>
+            <div class="bottom">광고</div>
+        </article>
+    </section>
+    <footer>
+        <div class="footer_t">
+            경기도 부천시 오정구 삼정동  032-674-5685  icoxpub@naver.com
+        </div>
+        <div class="footer_b">
+            COPYRIGHT All rights reserved.
+        </div>
+    </footer>
+</div>
+</body>
+</html>

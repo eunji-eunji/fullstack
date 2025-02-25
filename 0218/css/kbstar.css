@@ -1,0 +1,107 @@
+.container{
+    width: 990px;
+    height: 500px;
+    /* border: 1px solid red; */
+    margin: 0 auto;
+}
+section{
+    height: 200px;
+    /* border: 1px solid black; */
+}
+ul{
+    list-style: none;
+}
+section ul li{
+    box-sizing: border-box;
+    width: 280px;
+    height: 150px;
+    float: left;
+    border: 1px solid #ddd;
+    padding: 20px 0 0 20px;
+    margin-right: 45px;
+}
+
+section ul li:nth-child(3){
+    margin-right: 0px;  
+}
+
+
+section>ul>li:hover{
+    box-shadow: 10px 10px 10px #aaa;
+}
+
+ul li a{
+    text-decoration: none;
+    display: inline-block;
+    /* 줄바꿈 없이 넓이 높이를 부여하려면 inline-block 씀. */
+}
+
+ul li a .text1{
+    font: bold 14px;
+    color: #fff;
+    text-align: center;
+    padding: 3px 5px;
+}
+
+ul li a .text1_1{
+    width: 52px;
+    background-color: green;
+}
+
+ul li a .text1_2{
+    width: 65px;
+    background-color: navy;
+}
+
+ul li a .text1_3{
+    width: 65px;
+    background-color: darkgoldenrod;
+}
+
+ul li a .text2{
+    font-weight: bold;
+    margin: 10px 0;
+    color: black;
+}
+
+ul li a .text3{
+    color: #777;
+    font-size: 14px;
+}
+
+
+
+/* 금융상품 */
+.finantial{
+    height: 200px;
+}
+
+.left{
+    width: 100px;
+    float: left;
+    padding-left: 70px;
+    line-height: 13px;
+}
+.left a{
+    text-decoration: none;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.right ul li a img{
+    width: 50px;
+    height: 50px;
+}
+
+.right ul li a{
+    color: black;
+    float: right;
+    display: block;
+    width: 80px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.right ul li p{
+    line-height: 1.2px;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/adidas.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Monoton&family=Play:wght@400;700&display=swap');
+    </style>
+</head>
+
+<body>
+    <!-- 배경에 동영상 삽입하겠(자동재생/반복) -->
+    <figure class="vid">
+        <video autoplay muted loop>
+            <source src="media/adidas.mp4" type="video/mp4">
+        </video>
+    </figure>
+
+    <!-- 로고 -->
+    <h1><img src="images/adidas_logo.png" alt="아디다스 로고"></h1>
+
+    <header>
+        <!-- 1차메뉴 -->
+        <ul id="gnb">
+            <li class="on"><a href="#"><em>Home</em></a></li>
+            <li><a href="#"><em>COMPANY</em></a>
+                <!-- 2차 메뉴 -->
+                <!-- ul>(li>a[href=#]>em{2차메뉴$})*4 -->
+                <ul>
+                    <li><a href="#"><em>Profile</em></a></li>
+                    <li><a href="#"><em>strategy</em></a></li>
+                    <li><a href="#"><em>Culture</em></a></li>
+                    <li><a href="#"><em>History</em></a></li>
+                    <li><a href="#"><em>Contact</em></a></li>
+                </ul>
+            </li>
+            <li><a href="#"><em>BRAND</em></a>
+                <ul>
+                    <li><a href="#"><em>Adidas</em></a></li>
+                    <li><a href="#"><em>Reebok</em></a></li>
+                </ul>
+            </li>
+            <li><a href="#"><em>SUSTAINABILITY</em></a>
+                <ul>
+                    <li><a href="#"><em>Compliance</em></a></li>
+                    <li><a href="#"><em>Products</em></a></li>
+                    <li><a href="#"><em>Peoples</em></a></li>
+                    <li><a href="#"><em>Policies</em></a></li>
+                    <li><a href="#"><em>Contact</em></a></li>
+                </ul>
+            </li>
+            <li><a href="#"><em>CAREERS</em></a>
+                <ul>
+                    <li><a href="#"><em>Our Offer</em></a></li>
+                    <li><a href="#"><em>Foot Print</em></a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <!-- sns 아이콘 생성 -->
+    <ul id="sns">
+        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+    </ul>
+
+    <!-- 텍스트 상자 -->
+    <section class="txtBox">
+        <p class="txt">Best Qulified<strong>adidas</strong></p>
+        <p class="tit">50<em>/24</em></p>
+    </section>
+
+    <!-- 펼치기 애니메이션 -->
+    <section class="side">
+        <div class="con">
+            <p><em>Event & Community</em><a href="#"><img src="images/p1.jpg" alt=""></a></p>
+            <p><em>News & Notice</em><a href="#"><img src="images/p2.jpg" alt=""></a></p>
+            <p><em>Product Review</em><a href="#"><img src="images/p3.jpg" alt=""></a></p>
+        </div>
+        <div class="btn">
+            <i class="fa fa-angle-double-right"></i>
+            <i class="fa fa-angle-double-right"></i>
+            <i class="fa fa-angle-double-right"></i>
+        </div>
+    </section>
+</body>
+
+</html>

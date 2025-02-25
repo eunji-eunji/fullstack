@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼항연산자</title>
+    <script>
+        //숫자가 짝수인지 홀수인지 판별하는 삼항연산자를 제작
+        var num = 10;
+        console.log(num % 2 == 0 ? '짝수' : '홀수');
+
+        // var num1=11;
+        // var result=(num1 %2 == 0) ? "짝수" : "홀수";
+        // alert(result);
+
+        // var age = prompt("나이를 입력하세요", "");
+        // alert((age >= 20) ? "성인" : "미성년자");
+
+        //prompt로 나이, 성별을 입력받고, 20세 이상이면서 여성이면 "합격" 아니면 "불합격"
+        var first = prompt("나이를 입력하세요.", "");
+        var second = prompt("성별을 입력하세요.", "여성,남성");
+        var result = (first >= 20) && (second == "여성") ? "합격" : "불합격";
+        alert(result);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
