@@ -65,9 +65,11 @@ header>nav>ul>li>a:hover::after{
 header nav ul li ul{
     height: 230px;
     display: none;
+    transition: all 0.5s;
 }
 header>nav>ul:hover>li ul{
     display: block;
+    /* border: 1px solid red; */
 }
 
 header nav ul li ul li{
