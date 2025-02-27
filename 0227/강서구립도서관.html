@@ -120,10 +120,10 @@
         });
 
         const selectedTab=document.getElementById("menu"+tabId);
-        selectedTab.document.classList.add('active-tab');
+        selectedTab.classList.add('active-tab');
         
         allContents.forEach(function(content){
-            tab.classList.remove('active-content');
+            content.classList.remove('active-content');
         });
         
         const selectedContent=document.getElementById(tabId);
