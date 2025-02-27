@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 200px;
+                background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+
+</div>
+
+    <script>
+        var x='10';
+        var y='20';
+        console.log(x+y);
+
+        var a=Number(x);
+        var b=Number(y);
+        console.log(a+b);
+
+        var c=parseInt(x);
+        var d=parseInt(y);
+        console.log(c);
+        console.log(d);
+
+        var k=document.getElementById("box").offsetTop  //박스가 top에서 얼마나 떨어졌는지 숫자만 반환.
+        console.log(k);
+
+        //박스가 탑에서 몇 px 떨어졌는지. px로 반환.
+        var j=parseInt(window.getComputedStyle(document.getElementById("box")).top);
+        console.log(j);
+
+        
+    </script>
+</body>
+</html>

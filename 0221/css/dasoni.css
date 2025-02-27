@@ -43,6 +43,10 @@ header nav .line{
     background: #fff url(../images/header_line.png) no-repeat;
 }
 
+.gnb:hover ~ .line{
+    border-bottom: none;
+}
+
 header nav .shadow{
     position: absolute;
     height: 50px;
@@ -50,7 +54,7 @@ header nav .shadow{
     top: 0;
 }
 
-header nav .gnb:hover+.shadow{
+header nav .gnb:hover~.shadow{
     bottom: 0;
     background: url(../images/header_line.png) no-repeat 0 100%;
 }
@@ -89,14 +93,6 @@ header nav .gnb:hover+.shadow{
     height: 400px;
 }
 
-/* .shadow{
-    position: absolute;
-    height: 50px;
-    border: 1px solid blue;
-    top: 0px;
-} */
-/* 마우스 올렸을 때 밑에 메뉴 색깔 바뀌기 */
-
 .gnb li ul li {
     width: 200px;
     height: 50px;
@@ -104,14 +100,12 @@ header nav .gnb:hover+.shadow{
     text-align: center;
     margin: 0 auto;
     position: relative;
-    /* border: 1px solid red; */
     box-sizing: border-box;
 }
 
 .gnb li ul li a {
     display: inline-block;
     padding: 0 5px;
-    /* border: 1px solid black; */
     box-sizing: border-box;
 }
 
@@ -126,19 +120,14 @@ header nav .gnb:hover+.shadow{
     height: 0px;
     top: 0;
     left: 0;
-    /* border: 1px solid black; */
     background-color: #fff;
     z-index: -3;
     transition: all 0.3s;
 }
 
-nav .gnb:hover + .back_white {
+nav .gnb:hover ~ .back_white {
     height: 400px;
 }
-
-/* .gnb:hover+.shadow{
-    background: url(../images/header_line.png) no-repeat;
-} */
 
 .back {
     position: absolute;

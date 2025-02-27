@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #clock {
+            position: relative;
+            /* width: 300px;
+            height: 300px;
+            margin: 100px auto 0;
+            border: 1px solid #333; */
+        }
+
+        #clock img {
+            position: absolute;
+            /* top: 0;
+            left: 0; */
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        <span id="year">0000</span>년
+        <span id="month">00</span>월
+        <span id="date">00</span>일
+        <span id="nday">0</span>
+        <span id="hour">00</span>시
+        <span id="minute">00</span>분
+        <span id="second">00</span>초
+    </h1>
+
+    <div id="clock">
+        <img src="images/clock.png" alt="" id="clock1">
+        <img src="images/h.png" alt="" id="hour1">
+        <img src="images/m.png" alt="" id="minute1">
+        <img src="images/s.png" alt="" id="second1">
+    </div>
+
+
+
+    <script>
+        //전자시계
+        autoTime();
+        setInterval(autoTime, 1000);
+
+        function autoTime() {
+            var today = new Date();
+            var year = today.getFullYear();
+            var month = today.getMonth() + 1;
+            var date = today.getDate();
+            var day = today.getDay();
+            var hour = today.getHours();
+            var minute = today.getMinutes();
+            var second = today.getSeconds();
+
+            switch (day) {
+                case 0:
+                    day = "일요일";
+                    break;
+                case 1:
+                    day = "월요일";
+                    break;
+                case 2:
+                    day = "화요일";
+                    break;
+                case 3:
+                    day = "수요일";
+                    break;
+                case 4:
+                    day = "목요일";
+                    break;
+                case 5:
+                    day = "금요일";
+                    break;
+                case 6:
+                    day = "토요일";
+                    break;
+            }
+
+            document.getElementById('year').innerHTML = year;
+            document.getElementById('month').innerHTML = month;
+            document.getElementById('date').innerHTML = date;
+            document.getElementById('nday').innerHTML = day;
+            document.getElementById('hour').innerHTML = hour;
+            document.getElementById('minute').innerHTML = minute;
+            document.getElementById('second').innerHTML = second;
+
+
+
+            //ID선택자를 선택하는 방법
+            var si = document.getElementById('hour1');
+            var mi = document.getElementById('minute1');
+            var se = document.getElementById('second1');
+
+            if (hour > 12) {
+                hour = hour - 12;
+            }
+
+            var dsi = (hour * 30) + (minute / 2);
+            var dm = minute * 6; //분
+            var ds = second * 6; //초
+
+            si.style.transform = "rotate(" + dsi + "deg)";
+            mi.style.transform = "rotate(" + dm + "deg)";
+            se.style.transform = "rotate(" + ds + "deg)";
+        }
+        //document.write(year + "년 " + month + "월 " + date + "일 " + day + " " + hour + "시 " + minute + "분 " + second + "초<br>");
+        //document.write(`${year}년 ${month}월 ${date}일 ${day} ${hour}시 ${minute}분 ${second}초`);
+
+    </script>
+</body>
+
+</html>
