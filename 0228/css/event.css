@@ -1,0 +1,41 @@
+a:link, a:visited {
+    color:black;
+    text-decoration: none;
+ }
+ ul {
+    list-style: none;
+    width:500px;
+    margin:10px auto;
+    padding:0;
+    text-align: center;
+    /* display: flex; */
+    /* 부모에게 flex 하면 자식이 나열됨. 자식간 딱 붙어서 나열됨. */
+ }
+ li {
+    /* float: left 할 거면 부모(ul)에 높이를 줘야 함. 
+    그래서 inline-block해서 나열함. 사이가 띄어지는 단점이 있음.*/
+    display:inline-block;
+    width:120px;
+    border:1px solid #ccc;
+    padding:10px 15px;   
+    font-size:16px;
+    /* text-align:center; */
+ }
+
+li.on{
+    background-color: yellowgreen;
+    font-weight: bold;
+}
+
+ #result {
+    width:500px;
+    height:300px;
+    margin:30px auto;
+    border:2px solid #ccc;
+    border-radius:15px;
+ }
+ p {
+    width:80%;
+    padding:10px;
+    line-height: 2em;
+ }
