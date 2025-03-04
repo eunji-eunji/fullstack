@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            text-decoration: none;
+            list-style: none;
+        }
+
+        body {
+            background-color: #333;
+        }
+
+        #wrap {
+            width: 640px;
+            margin: 100px auto 0;
+        }
+
+        #nav {
+            display: flex;
+        }
+
+        /* or #nav li{float: left;} */
+        /* 1. 부모에 디스플레이 플렉스 하기
+        2. 자식에 플로트 레프트 하기 */
+
+        #nav li a {
+            display: block;
+            border: 2px solid #bbb;
+            margin: 0 6px 10px 0;
+            border-radius: 5px;
+        }
+
+        #nav li a img {
+            width: 70px;
+        }
+
+        #window {
+            clear: both;
+        }
+
+        #nav li a.active {
+            border: 2px solid #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <ul id="nav">
+            <li><a href="img/lop0.jpg" class="active"><img src="img/thumb0.jpg" alt="tiger0"></a></li>
+            <li><a href="img/lop1.jpg"><img src="img/thumb1.jpg" alt="tiger1"></a></li>
+            <li><a href="img/lop2.jpg"><img src="img/thumb2.jpg" alt="tiger2"></a></li>
+            <li><a href="img/lop3.jpg"><img src="img/thumb3.jpg" alt="tiger3"></a></li>
+            <li><a href="img/lop4.jpg"><img src="img/thumb4.jpg" alt="tiger4"></a></li>
+            <li><a href="img/lop5.jpg"><img src="img/thumb5.jpg" alt="tiger5"></a></li>
+            <li><a href="img/lop6.jpg"><img src="img/thumb6.jpg" alt="tiger6"></a></li>
+            <li><a href="img/lop7.jpg"><img src="img/thumb7.jpg" alt="tiger7"></a></li>
+        </ul>
+        <div id="window"><img src="img/lop0.jpg" alt=""></div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var navLinks = document.querySelectorAll("#nav li a");
+    navLinks.forEach(function (link) {
+        link.addEventListener("click", function (e) {
+            e.preventDefault(); //링크 금지 : return false와 비슷
+
+            var img_url = link.getAttribute('href');
+            //href와 같이 '='으로 연결된 속성값을 불러온다.
+            //alert(img_url);   //확인용
+            document.querySelector('#window img').setAttribute('src', img_url);
+            //#window img의 src에 img_url의 src를 적용. (이미지 주소 변경)
+            //get : 불러올 때,  set: 지정할 때
+
+            navLinks.forEach(function (navLink) {
+                navLink.classList.remove('active');
+            });
+            link.classList.add('active');
+
+            //얘도 가능
+            // document.addEventListener('DOMContentLoaded', function() {
+            //   var navLinks = document.querySelectorAll("#nav li a");
+
+            //   for (var i = 0; i < navLinks.length; i++) {
+            //     navLinks[i].addEventListener('click', function(event) {
+            //       event.preventDefault(); // 기본 동작 차단
+
+            //       var img_url = this.getAttribute('href');
+
+            //       document.querySelector("#window img").setAttribute('src', img_url);
+
+            //       for (var j = 0; j < navLinks.length; j++) {
+            //         navLinks[j].classList.remove('active');
+            //       }
+
+            //       this.classList.add('active');
+            //     });
+            //   }
+            // });
+
+            //return false;
+        });
+    });
+</script>

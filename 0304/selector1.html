@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myDiv">Hello, World!</div>
+    <div class="myClass">First Div</div>
+    <div class="myClass">Second Div</div>
+    <p>Paragraph1</p>
+    <p>Paragraph2</p>
+</body>
+</html>
+<script>
+    const element=document.getElementById('myDiv');
+    const element1=document.querySelector('#myDiv');
+    console.log(element.textContent);   //textContent: 안에 있는 글자를 읽어 와라.
+    console.log(element1);
+
+    const elements=document.getElementsByClassName("myClass");
+    const elements1=document.querySelectorAll('.myClass');  //2개이므로 배열이 됨.
+    console.log(elements[0].textContent);
+    console.log(elements[1].textContent);
+    
+    const p2=document.getElementsByTagName('p');
+    console.log(p2[0].textContent);
+    console.log(p2[1].textContent);
+    
+    const p=document.querySelectorAll('p');
+    console.log(p[0].textContent);
+    console.log(p[1].textContent);
+    
+
+
+</script>
