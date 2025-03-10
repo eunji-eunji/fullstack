@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin: 0; padding:0;}
+
+        .container{
+            width:1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        header{
+            background-color: antiquewhite;
+            height: 100px;
+        }
+
+        header h1.logo{
+            width: 200px;
+            height: 100px;
+            float: left;
+        }
+
+        header nav{
+            width: 600px;
+            height: 50px;
+            background-color: yellow;
+            float: right;
+            margin-top: 35px;
+            margin-right: 10px;
+        }
+
+        header nav ul{
+            list-style: none;
+        }
+        
+        header nav ul li{
+            float: left;
+        }
+
+        header nav ul li a{
+            display: block;
+            /* a는 인라인 요소이기 때문에 넓이 높이가 적용 안 됨.
+            display:block - 블럭 요소로 바꿈. */
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        header nav ul li a:hover{
+            background-color: black;
+            color: white;
+        }
+
+        .img_slider{
+            background-color: #ccc;
+            height: 300px;
+        }
+        section{
+            background-color: aqua;
+            height: 300px;
+        }
+
+        section article{
+            width: 400px;
+            height: 300px;
+            float: left;
+        }
+        section article.notice{
+            /* 섹션 아래 아티클이면서 노티스임. 띄어쓰면 자식의 의미가 됨. */
+            background-color: violet;
+        }
+        section article.banner{
+            background-color: plum;
+        }
+        section article.icons{
+            background-color: pink;
+        }
+
+        footer{
+            background-color: black;
+            height: 100px;
+            /* color: aliceblue; */
+
+            
+        }
+        /* float의 성질 - 앞에 두개 뒤에 한개 붙이는건 안됨. 밑에꺼에 옆에 붙음.
+        그래서 크게 두 개로 나누고 앞에 꺼를 다시 두 개로 나누는게 안전함. */
+        footer .foot_logo{
+            width: 200px;
+            height: 100px;
+            background-color: indianred;
+            float: left;
+        }
+        footer .foot_right{
+            width: 1000px;
+            height: 100px;
+            background-color: indigo;
+            float: left;
+        }
+        footer .foot_right .foot_menu{
+            height: 50px;
+            background-color: orange;
+        }
+        footer .foot_right .foot_copy{
+            height: 50px;
+            background-color: yellowgreen;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1 class="logo">
+                <img src="images/logo.png" alt="logo">
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="#">MENU1</a></li>
+                    <li><a href="#">MENU2</a></li>
+                    <li><a href="#">MENU3</a></li>
+                    <li><a href="#">MENU4</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="img_slider">
+            <img src="images/slide1.jpg" alt="">
+        </div>
+        <section>
+            <article class="notice">공지사항</article>
+            <article class="banner">배너</article>
+            <article class="icons">아이콘</article>
+            <!-- section 안에 article 보통 씀. div와 같은 의미 -->
+        </section>
+
+        <footer>
+            <div class="foot_logo">로고</div>
+            <div class="foot_right">
+                <div class="foot_menu">메뉴</div>
+                <div class="foot_copy">복사</div>
+            </div>
+        </footer>
+        <!-- header는 body에 한 번밖에 안 나옴 -->
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="jquery.bxslider.css">
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="jquery.bxslider.js"></script>
+    <!-- 구글: bxslider 검색 - git 다운로드 - jquery.bxslider.css, js 만 가져오기 -->
+    <!-- 사용: $('.bxslider').bxSlider(); -->
+    <!-- 홈페이지 - 옵션 - 여러 기능들 있음. 공부하셈 https://bxslider.com/options -->
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        header {
+            width: 960px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: pink;
+        }
+
+        section {
+            width: 960px;
+            height: 800px;
+            margin: 0 auto;
+            border: 1px solid red;
+        }
+    </style>
+    <script>
+        $(function () {
+            $('.bxslider').bxSlider();
+        });
+    </script>
+</head>
+
+<body>
+    <header>헤더</header>
+    <section>
+        <ul class="bxslider">
+            <li><img src="img/images(1).jpg" alt=""></li>
+            <li><img src="img/images(2).jpg" alt=""></li>
+            <li><img src="img/images(3).jpg" alt=""></li>
+            <li><img src="img/images(4).jpg" alt=""></li>
+            <li><img src="img/images(5).jpg" alt=""></li>
+        </ul>
+    </section>
+</body>
+
+</html>

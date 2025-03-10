@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       var name="전역변수";
+       function printName(){
+        var name='지역변수';
+        console.log(name);
+        //전역변수와 지역변수가 같은 이름일 때는 지역변수 우선?
+       }
+
+       printName(); //지역변수
+       console.log(name);   //전역변수
+
+
+    </script>
+</body>
+</html>

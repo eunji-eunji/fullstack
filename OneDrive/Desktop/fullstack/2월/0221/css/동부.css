@@ -1,0 +1,118 @@
+*{margin:0; padding:0;}
+ul{list-style: none;}
+a{color: #fff; text-decoration: none; font-weight: bold; font-size: 17px;}
+
+.cf::after{
+    content: '';
+    display: block;
+    clear:both;
+}
+header{
+    width: 1920px;
+    height: 700px;
+    position: relative;
+    top: 0;
+    left: 0;
+    background: url(../images/동부센트레빌.jpg) no-repeat 0 0 / cover;
+}
+
+header nav{
+    position: absolute;
+    height: 70px;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+header nav .line{
+    position: absolute;
+    height: 1px;
+    width: 1400px;
+    top: 69px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: #fff;
+    z-index: 10;
+}
+header>nav>ul{
+    width: 1000px;
+    height: 70px;
+    margin: 0 auto;
+    /* overflow: hidden;
+    transition: all 0.3; */
+    /* z-index: 10; */
+}
+
+/* header>nav>ul:hover{
+    height: 270px;
+} */
+
+header>nav>ul>li{
+    /* 첫 번째 정렬 방법 */
+    /* display: inline-block;
+    vertical-align: top; */
+    /* 위에 방법 쓰니까 맨 마지막 a(브랜드)가 밑으로 내려감 */
+
+    /* 두 번째 정렬 방법 */
+    float: left;
+}
+
+header nav ul li a{
+    /* a는 인라인 요소이므로 */
+    display: block;
+    width: 200px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+header nav ul ul a{
+    height: 40px;
+    line-height: 40px;
+    font-weight: normal;
+}
+
+header nav ul li ul{
+    /* 첫번째 방법 display:none - block */
+    /* display: none; */
+    /* 두 번째 방법  overflow:hidden주고 높이 다르게 설정 */
+    height: 0;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+header nav ul:hover li ul{
+    /* display: block; */
+    height: 200px;
+}
+
+header nav ul li a::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    bottom: 0;
+    left: 0;
+    transform: scale(0,1);
+    transition: all 0.3s;
+}
+
+header nav ul li a:hover::after{
+    transform: scale(1,1);
+}
+
+header nav .sub_shadow{
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    left: 0;
+    top: 0;
+    background-color: #042e6f;
+    transition: all 0.3s;
+}
+
+header nav ul:hover+.sub_shadow{
+    height: 300px;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+*{margin: 0;padding: 0;}    
+.box{
+   width:200px;
+   height:200px;
+}
+.box1{
+   background-color: orange;
+}
+.box2{
+    background-color: yellow;
+    margin-bottom: 50px;
+}
+.box3{
+    background-color: yellowgreen;
+    margin-top: 50px;
+    /* 마진 중첩 현상: 위,아래에 겹쳐서 줄 때 한 번만 적용됨 */
+}
+.box4{
+    background-color: tomato;
+}
+
+.box1 p{
+    margin-top: 20px;
+    /* 마진 병합 현상: 자식에게 마진줬을 때 부모에게 적용됨. */
+    /* 부모와 자식이 둘 다 블럭 요소일 경우 발생. */
+}
+</style>
+</head>
+<body>
+    <div class="box box1"><p>박스1</p></div>
+    <div class="box box2"><p>박스2</p></div>
+    <div class="box box3"><p>박스3</p></div>
+    <div class="box box4"><p>박스4</p></div>
+</body>
+</html>

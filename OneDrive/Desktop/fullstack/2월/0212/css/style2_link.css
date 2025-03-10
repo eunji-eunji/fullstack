@@ -1,0 +1,32 @@
+h1 {
+    background-color: red;
+}
+
+p {
+    color: blue
+}
+
+.gr {
+    color: green
+}
+
+#pink1 {
+    background-color: pink
+}
+/* id선택자는 body 안에 오직 1개만 쓸 수 있음. 
+보통 전체적인 구역을 나누거나 특징적일 때 씀.
+한 개만 쓸 수 있기 때문에. */
+
+.btxt{color: red;}
+.ctxt{color: purple;}
+.atxt{font-weight: bold;}
+
+#b1{background-color: brown;}
+.a1{background-color: yellow !important;}
+/* 중복으로 css 썼을 때 id 선택자가 제일 우선순위임. id > class > type 순서.*/
+/* !important 붙이면 그게 우선순위가 됨. */
+/* 선택자 우선순위
+1. !important
+2. id
+3. class
+4. 일반선택자(type 선택자) */

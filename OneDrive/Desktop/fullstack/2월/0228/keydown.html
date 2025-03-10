@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #cat-container {
+            position: relative;
+        }
+
+        #cat {
+            width: 100px;
+            position: absolute;
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cat-container">
+        <img src="img/1.png" alt="Funny Cat" id="cat">
+    </div>
+</body>
+
+</html>
+
+<script>
+    let currentX=0;
+    let currentY=0;
+    //X, Y 좌표에 누적값 줌
+
+    let cat = document.getElementById('cat');
+    document.addEventListener('keydown', function (event) {
+        moveCat(event.key);
+    });
+    function moveCat(direction) {
+        const step = 20;
+
+        switch (direction) {
+            case 'ArrowUp':
+                currentY=currentY-step; //방향키 누를 때마다 누적됨.
+                // cat.style.transform = `translateY(-${step}px)`;  //방향키 한 번만 작동됨.
+                break;
+            case 'ArrowDown':
+                currentY+=step;
+                // cat.style.transform = `translateY(${step}px)`;
+                break;
+            case 'ArrowLeft':
+                currentX-=step;
+                // cat.style.transform = `translateX(-${step}px)`;
+                break;
+            case 'ArrowRight':
+                currentX+=step;
+                // cat.style.transform = `translateX(${step}px)`;
+                break;
+
+            default:
+                break;
+        }
+        cat.style.transform=`translate(${currentX}px, ${currentY}px)`;
+    }
+</script>

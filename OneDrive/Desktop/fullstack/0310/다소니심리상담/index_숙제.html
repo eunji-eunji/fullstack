@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dasoni2.css">
+    <link rel="stylesheet" href="jquery.bxslider_dasoni.css" />
+    <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/jquery.bxslider.js"></script>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="header_out">
+
+            <header>
+                <div class="header_line">
+                    <div class="logo">
+                        <a href="#"><img src="img/logo.png" /></a>
+                    </div>
+                </div>
+
+                <div class="gnb">
+                    <ul class="menu">
+                        <li>
+                            <a href="#">ABOUT 다소니</a>
+                            <ul>
+                                <li><a href="#">인사말</a></li>
+                                <li><a href="#">연혁</a></li>
+                                <li><a href="#">오시는 길</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">심리상담</a>
+                            <ul>
+                                <li><a href="#">관계테라피</a></li>
+                                <li><a href="#">성인심리상담</a></li>
+                                <li><a href="#">청춘상담</a></li>
+                                <li><a href="#">청소년심리상담</a></li>
+                                <li><a href="#">아동심리상담</a></li>
+                                <li><a href="#">심리상담 예약 신청</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">집단상담</a>
+                            <ul>
+                                <li><a href="#">소개</a></li>
+                                <li><a href="#">상담일정</a></li>
+                                <li><a href="#">집단상담 예약 신청</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">전문심리검사</a>
+                            <ul>
+                                <li><a href="#">안내</a></li>
+                                <li><a href="#">성인심리검사</a></li>
+                                <li><a href="#">청소년심리검사</a></li>
+                                <li><a href="#">아동심리검사</a></li>
+                                <li><a href="#">신경심리검사</a></li>
+                                <li><a href="#">심리검사 예약 신청</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">소통</a>
+                            <ul>
+                                <li><a href="#">공지사항</a></li>
+                                <li><a href="#">마음산책</a></li>
+                                <li><a href="#">비밀고민상담</a></li>
+                                <li><a href="#">후기</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="shadow"></div>
+                </div>
+
+            </header>
+        </div>
+        <!-- header_out -->
+        <section id="s1">
+            <ul class="slider">
+                <li>
+                    <a href="#"><img src="img/main_visual.jpg"></a>
+                    <div class="s1_tbox">
+                        <p class="btext0">언택트시대 필수 과정</p>
+                        <h2 class="text0">비대면 상담 비대면 검사 </h2>
+                        <p class="atext0">
+                            이제 당신의 공간에서 전문 상담가를 만나보세요.
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <a href="#"><img src="img/main_visual2.jpg"></a>
+                    <div class="s1_tbox">
+                        <p class="btext1">가격부담 Down x 치료기대효과 Up</p>
+                        <h2 class="text1">다소니관계테라피 </h2>
+                        <p class="atext1">
+                            검사와 상담이 모두 필요한 여러분에게 딱!
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+</body>
+
+</html>
+
+<script>
+    $(function () {
+        setTimeout(function () {
+            $('.slider li .btext0').addClass('on');
+            $('.slider li .text0').addClass('on');
+            $('.slider li .atext0').addClass('on');
+
+        }, 500)
+        var bx = $('.slider').bxSlider({
+            auto: true,
+            mode: 'fade',
+            pager: false,
+            pause: 5000, //속도
+            onSlideBefore: function () { },
+            onSlideAfter: function () {
+                var k = bx.getCurrentSlide();
+                $('.slider li').find('h2').removeClass('on');
+                $('.slider li').find('p').removeClass('on');
+                $('.slider li .btext' + k).addClass('on');
+                $('.slider li .text' + k).addClass('on');
+                $('.slider li .atext' + k).addClass('on');
+
+            },
+        });
+    });
+</script>
