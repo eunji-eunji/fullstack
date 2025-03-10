@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="jquery.bxslider.css">
+    <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="jquery.bxslider2.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        ul li a img {
+            border-radius: 20px;
+        }
+
+        .num {
+            position: relative;
+            width: 300px;
+            height: 50px;
+        }
+
+        .num p {
+            position: absolute;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul class="slide">
+            <li><a href="#"><img src="b1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="b2.png" alt=""></a></li>
+            <li><a href="#"><img src="b3.png" alt=""></a></li>
+            <li><a href="#"><img src="b4.png" alt=""></a></li>
+            <li><a href="#"><img src="b5.png" alt=""></a></li>
+            <li><a href="#"><img src="b6.jpg" alt=""></a></li>
+            <li><a href="#"><img src="b7.png" alt=""></a></li>
+        </ul>
+
+    </div>
+    <div class="num">
+        <p><span>1</span>/7</p>
+    </div>
+</body>
+
+</html>
+
+<script>
+    $('.slide').bxSlider({
+        auto: true,
+        pager: false,
+    });
+</script>

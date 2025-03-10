@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="jquery.bxslider.css">
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="jquery.bxslider.js"></script>
+    <style>
+        *{margin:0; padding:0}
+        header{
+            width: 960px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: pink;
+        }
+        section{
+            width: 960px;
+            height: 800px;
+            margin: 0 auto;
+            border: 1px solid red;
+        }
+    </style>
+    <script>
+        $(function(){
+            $('.bxslider').bxSlider({
+                auto:true,  //자동 슬라이드
+                mode: 'fade',   //사라졌다가 나타남.
+                controls:false, //화살표 숨기기
+                pager:false,    //하단의 페이지 버튼 숨기기
+                speed:500,  //사진 한 장 넘어가는 속도
+                pause:2000,  //실제 슬라이드 속도
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>헤더</header>
+    <section>
+        <ul class="bxslider">
+            <li><img src="img/images(1).jpg" alt=""></li>
+            <li><img src="img/images(2).jpg" alt=""></li>
+            <li><img src="img/images(3).jpg" alt=""></li>
+            <li><img src="img/images(4).jpg" alt=""></li>
+            <li><img src="img/images(5).jpg" alt=""></li>
+        </ul>
+    </section>
+</body>
+</html>

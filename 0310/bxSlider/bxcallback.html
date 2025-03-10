@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="jquery.bxslider_call.css">
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="jquery.bxslider.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #img_slider {
+            width: 640px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #btn p {
+            position: absolute;
+            top: 40%;
+        }
+
+        #btn p.left_btn {
+            left: 20px;
+        }
+
+        #btn p.right_btn {
+            right: 20px;
+        }
+
+        p a {
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        #btn p a:hover {
+            color: #bbb;
+        }
+
+        #page {
+            width: 640px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        #page ul {
+            position: relative;
+        }
+
+        #page ul li {
+            float: left;
+            width: 14%;
+            height: 30px;
+            line-height: 30px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        #page ul #focus {
+            position: absolute;
+            width: 14%;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            height: 30px;
+            border-radius: 5px;
+            border: 2px solid purple;
+        }
+
+        #page li.on a {
+            color: #bbb;
+        }
+
+        .slide li {
+            position: relative;
+        }
+
+        .slide li h1 {
+            position: absolute;
+            left: 20px;
+            top: 60px;
+            z-index: 999;
+            transform: translateY(60px);
+            opacity: 0;
+            transition: all 0.6s;
+        }
+
+        .slide li h1.on {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<script>
+    $(function () {
+        var slide = $('.slide').bxSlider({
+            auto: true,
+            controls: false,
+            onSlideBefore: function () {    //슬라이드 전에 실행
+                var n = slide.getCurrentSlide();    //인덱스 번호 구하기
+                var w=$('#page ul li').width();
+                // consol.log(w);
+                $('#page ul li').removeClass('on');
+                $('#page ul li').eq(n).addClass('on');
+                if(n==0){
+                    $('#focus').css('left','0');
+                }else{
+                    $('#focus').stop().animate({'left':n*w},600);
+
+                }
+            },
+            onSlideAfter: function () { //슬라이드 후에 실행
+                var k = slide.getCurrentSlide();
+                $('.slide li').find('h1').removeClass('on');
+                $('.slide li .text'+k).addClass('on');
+            },
+
+        });
+        // $('#btn .left_btn').goToPrevSlide();
+        // $('#btn .right_btn').goToNextSlide();
+    });
+</script>
+
+<body>
+    <div id="img_slider">
+        <ul class="slide">
+            <li>
+                <a href="#"><img src="img/w1.JPG" alt=""></a>
+                <h1 class="text0 on">fashion style1</h1>
+            </li>
+            <li>
+                <a href="#"><img src="img/w2.JPG" alt=""></a>
+                <h1 class="text1">fashion style2</h1>
+            </li>
+            <li>
+                <a href="#"><img src="img/w3.JPG" alt=""></a>
+                <h1 class="text2">fashion style3</h1>
+            </li>
+            <li>
+                <a href="#"><img src="img/w4.JPG" alt=""></a>
+                <h1 class="text3">fashion style4</h1>
+            </li>
+            <li>
+                <a href="#"><img src="img/w5.JPG" alt=""></a>
+                <h1 class="text4">fashion style5</h1>
+            </li>
+            <li>
+                <a href="#"><img src="img/w6.JPG" alt=""></a>
+                <h1 class="text5">fashion style6</h1>
+            </li>
+            <li>
+                <a href="#"><img src="img/w7.JPG" alt=""></a>
+                <h1 class="text6">fashion style7</h1>
+            </li>
+
+        </ul>
+        <div id="btn">
+            <p class="left_btn">
+                <a href="#">&lt;</a>
+            </p>
+            <p class="right_btn">
+                <a href="#">&gt;</a>
+            </p>
+        </div>
+        <div id="page">
+            <ul>
+                <li><a href="#">1번</a></li>
+                <li><a href="#">2번</a></li>
+                <li><a href="#">3번</a></li>
+                <li><a href="#">4번</a></li>
+                <li><a href="#">5번</a></li>
+                <li><a href="#">6번</a></li>
+                <li><a href="#">7번</a></li>
+                <div id="focus">
+
+                </div>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
