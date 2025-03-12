@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="jquery.bxslider.css">
+    <link rel="stylesheet" href="jquery.bxslider2.css">
     <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="jquery.bxslider2.js"></script>
 
@@ -24,47 +24,104 @@
             text-decoration: none;
             color: black;
         }
+        .all{
+            width: 835px;
+            height: 500px;
+            margin: 0 auto;
+        }
 
         ul li a img {
             border-radius: 20px;
+            margin: 0 auto;
         }
 
         .num {
-            position: relative;
-            width: 300px;
+            width: 50px;
             height: 50px;
+            float: left;
         }
 
-        .num p {
-            position: absolute;
+        .button p a {
+            display: block;
+            width: 20px;
+            height: 21px;
+            float: left;
         }
 
+        p .prev {
+            background: url(slickButton.png) no-repeat 0 0;
+        }
+
+        p .stop {
+            background: url(slickButton.png) no-repeat -20px 0;
+        }
+
+        p a.on {
+            background: url(slickButton.png) no-repeat -40px 0;
+        }
+
+        p .next {
+            background: url(slickButton.png) no-repeat -60px 0;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <ul class="slide">
-            <li><a href="#"><img src="b1.jpg" alt=""></a></li>
-            <li><a href="#"><img src="b2.png" alt=""></a></li>
-            <li><a href="#"><img src="b3.png" alt=""></a></li>
-            <li><a href="#"><img src="b4.png" alt=""></a></li>
-            <li><a href="#"><img src="b5.png" alt=""></a></li>
-            <li><a href="#"><img src="b6.jpg" alt=""></a></li>
-            <li><a href="#"><img src="b7.png" alt=""></a></li>
-        </ul>
+    <div class="all">
+        <div class="container">
+            <ul class="slide">
+                <li><a href="#"><img src="b1.jpg" alt=""></a></li>
+                <li><a href="#"><img src="b2.png" alt=""></a></li>
+                <li><a href="#"><img src="b3.png" alt=""></a></li>
+                <li><a href="#"><img src="b4.png" alt=""></a></li>
+                <li><a href="#"><img src="b5.png" alt=""></a></li>
+                <li><a href="#"><img src="b6.jpg" alt=""></a></li>
+                <li><a href="#"><img src="b7.png" alt=""></a></li>
+            </ul>
+        </div>
+        <div class="num">
+            <p><span>1</span>/7</p>
+        </div>
+        <div class="button">
+            <p><a href="#" class="prev"></a></p>
+            <p><a href="#" class="stop"></a></p>
+            <p><a href="#" class="next"></a></p>
+        </div>
 
-    </div>
-    <div class="num">
-        <p><span>1</span>/7</p>
     </div>
 </body>
 
 </html>
 
 <script>
-    $('.slide').bxSlider({
+    var slide = $('.slide').bxSlider({
         auto: true,
         pager: false,
+        controls: false,
+        pause: 2000,
+        onSlideAfter: function ($slideElement, oldIndex, newIndex) {
+            console.log($slideElement, oldIndex, newIndex);
+            $('.num span').text(newIndex + 1);
+        }
+    });
+
+    $('.prev').click(function () {
+        slide.goToPrevSlide();
+        return false;
+    });
+    $('.next').click(function () {
+        slide.goToNextSlide();
+        return false;
+    });
+    $('.stop').click(function () {
+        var k = $(this).hasClass('on');
+        if (k == false) {
+            $(this).addClass('on');
+            slide.stopAuto();
+        }
+        else {
+            $(this).removeClass('on');
+            slide.startAuto();
+        }
     });
 </script>

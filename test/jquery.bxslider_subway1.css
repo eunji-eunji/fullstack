@@ -39,8 +39,9 @@ ul.bxslider {
 .bx-wrapper .bx-pager,
 .bx-wrapper .bx-controls-auto {
   position: absolute;
-  bottom: -30px;
-  width: 100%;
+  bottom: 50px;
+  right: 370px;
+  /* width: 100%; */
 }
 /* LOADER */
 .bx-wrapper .bx-loading {
@@ -63,7 +64,7 @@ ul.bxslider {
   padding-top: 20px;
 }
 .bx-wrapper .bx-pager.bx-default-pager a {
-  background: #666;
+  background: #fff;
   text-indent: -9999px;
   display: block;
   width: 10px;
@@ -77,7 +78,8 @@ ul.bxslider {
 .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .bx-wrapper .bx-pager.bx-default-pager a.active,
 .bx-wrapper .bx-pager.bx-default-pager a:focus {
-  background: #000;
+  background: #ffc300;
+  width: 30px;
 }
 .bx-wrapper .bx-pager-item,
 .bx-wrapper .bx-controls-auto .bx-controls-auto-item {
@@ -92,11 +94,10 @@ ul.bxslider {
 }
 /* DIRECTION CONTROLS (NEXT / PREV) */
 .bx-wrapper .bx-prev {
-    bottom: -20px;
   left: 10px;
-  /* background: url(slickButton.png) no-repeat 0 0px; */
+  background: url('images/controls.png') no-repeat 0 -32px;
 }
-
+.bx-wrapper .bx-prev:hover,
 .bx-wrapper .bx-prev:focus {
   background-position: 0 0;
 }
@@ -104,7 +105,7 @@ ul.bxslider {
   right: 10px;
   background: url('images/controls.png') no-repeat -43px -32px;
 }
-
+.bx-wrapper .bx-next:hover,
 .bx-wrapper .bx-next:focus {
   background-position: -43px 0;
 }

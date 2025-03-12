@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.mousewheel.min.js"></script>
+
+    <style>
+        * {margin: 0;padding: 0;}
+
+        a {text-decoration: none;}
+
+        article {
+            width: 100%;
+            height: 100vh;
+        }
+
+        #article1 {background-color: burlywood;}
+        #article2 {background-color: coral;}
+        #article3 {background-color: gold;}
+        #article4 {background-color: silver;}
+
+        nav {
+            position: fixed;
+            top: 0;
+            height: 100px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        nav ul {
+            width: 1000px;
+            height: 100px;
+            margin: 0 auto;
+            list-style: none;
+        }
+
+        ul li {float: left;}
+
+        ul li a {
+            display: block;
+            width: 250px;
+            height: 100px;
+            line-height: 100px;
+            font-size: 32px;
+            color: #000;
+            text-align: center;
+        }
+
+        nav ul li.on a {
+            color: orange;
+            font-weight: bold;
+        }
+
+        h2 {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<script>
+    $(function () {
+        var a0 = $('section>article').eq(0).offset().top;
+        var a1 = $('section>article').eq(1).offset().top;
+        var a2 = $('section>article').eq(2).offset().top;
+        var a3 = $('section>article').eq(3).offset().top;
+        console.log(a0, a1, a2, a3);
+
+        $(window).scroll(function () {
+            var sct = $(window).scrollTop();
+            $('#stop').text(sct);
+            // if (sct >= $('section>article').eq(0).offset().top) {
+            //     $('nav ul li').removeClass('on');
+            //     $('nav ul li').eq(0).addClass('on');
+            // }
+            // if (sct >= $('section>article').eq(1).offset().top) {
+            //     $('nav ul li').removeClass('on');
+            //     $('nav ul li').eq(1).addClass('on');
+            // }
+            // if (sct >= $('section>article').eq(2).offset().top) {
+            //     $('nav ul li').removeClass('on');
+            //     $('nav ul li').eq(2).addClass('on');
+            // }
+            // if (sct >= $('section>article').eq(3).offset().top) {
+            //     $('nav ul li').removeClass('on');
+            //     $('nav ul li').eq(3).addClass('on');
+            // }
+            for (var a = 0; a < 4; a++) {
+                if (sct >= $('section>article').eq(a).offset().top) {
+                    $('nav ul li').removeClass('on');
+                    $('nav ul li').eq(a).addClass('on');
+                }
+            }
+        });
+
+        $('nav ul li').click(function () {
+            var i = $(this).index();
+            var offsetp = $('section>article').eq(i).offset().top;
+            // alert(offsetp);
+
+            $('html, body').stop().animate({
+                scrollTop: offsetp
+            }, 1300);
+
+            return false;   //앵커 기능 없앰
+        });
+
+        $('section>article').mousewheel(function(event, d){ //jquery.mousewheel.min.js 마우스 휠은 이 파일 있어야 가능.
+            console.log(d); //휠을 위로 올리면 1, 내리면 -1
+            if(d>0){    //휠을 위로 올렸을 때
+                var pre=$(this).prev().offset().top;    //이전에 있는 요소의 offset top 값
+                console.log(pre);
+                $('html, body').stop().animate({    //휠을 올리면 pre로 애니메이트해서 이동
+                scrollTop: pre
+            }, 1300, 'easeOutBounce');  //-> jquery.easing.1.3.js 이 파일이 있어야 가능. 구글에 저거 검색해서 여러 효과 볼 수 있음
+            }
+            if(d<0) {   
+                var nex=$(this).next().offset().top;    //다음에 있는 요소의 offset.top 값
+                console.log(nex);
+                $('html, body').stop().animate({
+                scrollTop: nex
+            }, 1300,'easeOutBounce');
+            }
+        });
+    });
+</script>
+
+<body>
+    <nav>
+        <ul>
+            <li class="on"><a href="#article1">회사소개</a></li>
+            <li><a href="#article2">제품소개</a></li>
+            <li><a href="#article3">커뮤니티</a></li>
+            <li><a href="#article4">다운로드</a></li>
+            <!-- 링크로 연결해 놔서 '회사소개' 누르면 스크롤이 #article1 위치로 이동함.-> 앵커 기능 -->
+
+        </ul>
+    </nav>
+    <section>
+        <article id="article1"></article>
+        <article id="article2"></article>
+        <article id="article3"></article>
+        <article id="article4"></article>
+    </section>
+    <h2>현재 스크롤 위치: <span id="stop">0</span></h2>
+</body>
+
+</html>
