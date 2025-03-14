@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bxSlider 2개 활용</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bxslider@4/dist/jquery.bxslider.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bxslider@4/dist/jquery.bxslider.min.js"></script>
+    <style>
+        .slider-container { margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+
+    <!-- 첫 번째 슬라이더 -->
+    <div class="slider-container">
+        <ul class="slider1">
+            <li><img src="https://via.placeholder.com/600x300/FF5733/FFFFFF?text=Slide+1" alt="Slide 1"></li>
+            <li><img src="https://via.placeholder.com/600x300/33FF57/FFFFFF?text=Slide+2" alt="Slide 2"></li>
+            <li><img src="https://via.placeholder.com/600x300/3357FF/FFFFFF?text=Slide+3" alt="Slide 3"></li>
+        </ul>
+    </div>
+
+    <!-- 두 번째 슬라이더 -->
+    <div class="slider-container">
+        <ul class="slider2">
+            <li><img src="https://via.placeholder.com/600x300/FF33A1/FFFFFF?text=Slide+1" alt="Slide 1"></li>
+            <li><img src="https://via.placeholder.com/600x300/A133FF/FFFFFF?text=Slide+2" alt="Slide 2"></li>
+            <li><img src="https://via.placeholder.com/600x300/33FFA1/FFFFFF?text=Slide+3" alt="Slide 3"></li>
+        </ul>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $('.slider1').bxSlider({
+                mode: 'horizontal',
+                auto: true,
+                controls: true,
+                pager: true
+            });
+
+            $('.slider2').bxSlider({
+                mode: 'fade',
+                auto: true,
+                controls: false,
+                pager: true
+            });
+        });
+    </script>
+
+</body>
+</html>
