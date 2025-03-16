@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
 }
-body{
+
+body {
     overflow-x: hidden;
 }
 
@@ -271,11 +272,12 @@ header {
 #pre,
 #morning {
     position: absolute;
-    width: 1070px;
+    width: 1200px;
     height: 320px;
     top: 20px;
     left: 50%;
     transform: translate(-50%, 0);
+    /* background-color: pink; */
 }
 
 .menu_img #classic,
@@ -287,11 +289,20 @@ header {
     transition: all 0.3s;
 }
 
+.menu_img ul {
+    margin-left: 20px;
+}
+
 .menu_img ul li {
     height: 320px;
     width: 260px;
-    /* padding: 0px 5px; */
-    margin: 0px 20px;
+    /* background-color: yellow; */
+}
+
+.menu_img ul li a p {
+    color: #999;
+    font-size: 13px;
+    letter-spacing: -1px;
 }
 
 .menu_img #classic.on,
@@ -301,9 +312,19 @@ header {
     visibility: visible;
     opacity: 1;
 }
-.menu_img ul li strong{
+
+.menu_img ul li strong {
     font-size: 18px;
 }
+/* .menu_img ul li:hover img{
+    width: 340px;
+    height: 238px;
+
+}
+.menu_img ul li:hover img::after{
+    background: url(images/btn_more.png) no-repeat 50% 100%;
+} */
+
 
 /* 하단 슬라이드 등 */
 section#bottomMenu {
@@ -441,7 +462,8 @@ section#bottomMenu {
 .down .down1 ul li a:hover {
     color: #009223;
 }
-.down .down1 ul li a::after{
+
+.down .down1 ul li a::after {
     content: '';
     position: absolute;
     width: 0;
@@ -451,7 +473,8 @@ section#bottomMenu {
     bottom: 0;
     transition: all 0.3s;
 }
-.down .down1 ul li a:hover::after{
+
+.down .down1 ul li a:hover::after {
     width: 100%;
 }
 
@@ -524,63 +547,73 @@ ul li .icon4 {
     /* background-color: #009223; */
     float: left;
 }
-#quickMenu ul li .letter strong, 
-#quickMenu ul li .letter span{
+
+#quickMenu ul li .letter strong,
+#quickMenu ul li .letter span {
     margin-left: 15px;
 }
 
 /* footer */
-footer{
+footer {
     width: 100%;
     background-color: #292929;
     position: relative;
 }
-.content{
+
+.content {
     width: 1170px;
     height: 107px;
     padding: 22px 0;
     margin: 0 auto;
 }
-.content ul{
+
+.content ul {
     margin-bottom: 22px;
 }
-.content ul li{
+
+.content ul li {
     float: left;
     padding: 0px 15px 22px 15px;
 }
-.content ul li:nth-child(1){
+
+.content ul li:nth-child(1) {
     padding-left: 0;
 }
-.content ul li a{
+
+.content ul li a {
     color: #666;
     font-size: 14px;
     letter-spacing: -2px;
 }
-.content ul li:nth-child(2) a{
+
+.content ul li:nth-child(2) a {
     color: #bbb;
 }
 
-.content p{
+.content p {
     clear: both;
     color: #666;
     font-size: 13px;
     height: 27px;
     line-height: 50px;
 }
-.content p:nth-child(1){
+
+.content p:nth-child(1) {
     height: 13px;
     letter-spacing: -1px;
 }
-.content p span{
+
+.content p span {
     padding: 0 10px 0 0;
     border-right: 1px solid #666;
 }
-.content p span:nth-child(4){
+
+.content p span:nth-child(4) {
     border: none;
 }
 
 
-.line{
+.line {
     width: 100%;
     height: 1px;
     background-color: #3b3b3b;
@@ -589,7 +622,7 @@ footer{
 }
 
 /* 팝업 */
-.popup{
+.popup {
     position: fixed;
     top: 50px;
     left: 100px;
@@ -600,21 +633,32 @@ footer{
     z-index: 100000;
     /* display: none; */
 }
-.popup img{
+
+.popup img {
     margin: 10px 10px 0 10px;
 }
+
 .popup .closewrap {
     position: absolute;
     left: 15px;
     /* background-color: pink; */
 }
-.popup .closewrap label{
+
+.popup .closewrap label {
     cursor: pointer;
 }
 
-.popup .closebtn{
+.popup .closebtn {
     position: absolute;
     right: 20px;
     bottom: 10px;
     cursor: pointer;
 }
+
+.s2 .bx-wrapper .bx-pager {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    background-color: yellow;
+}
+

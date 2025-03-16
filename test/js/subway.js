@@ -17,7 +17,7 @@ $(function () {
     minSlides: 4,
     maxSlides: 4,
     slideWidth: 260,
-    slideMargin: 10,
+    slideMargin: 40,
     infiniteLoop: false,
   });
 
@@ -29,7 +29,7 @@ $(function () {
     minSlides: 4,
     maxSlides: 4,
     slideWidth: 260,
-    slideMargin: 10,
+    slideMargin: 40,
     infiniteLoop: false,
   });
 
@@ -41,7 +41,7 @@ $(function () {
     minSlides: 4,
     maxSlides: 4,
     slideWidth: 260,
-    slideMargin: 10,
+    slideMargin: 40,
     infiniteLoop: false,
   });
 
@@ -53,10 +53,11 @@ $(function () {
     minSlides: 4,
     maxSlides: 4,
     slideWidth: 260,
-    slideMargin: 10,
+    slideMargin: 40,
     infiniteLoop: false,
   });
 
+  // 하단 드라마 포스터 슬라이드
   $('.s2').bxSlider({
     auto: false,
     controls: false,
@@ -65,10 +66,15 @@ $(function () {
     minSlides: 1,
     maxSlides: 1,
     slideWidth: 270,
+    wrapperClass: 'bx-wrapper s2',
 
   });
 
+  // 하단 슬라이드 페이저 따로 적용
+  $('.s2 .bx-pager').css('top', '0px');
+  $('.s2 .bx-pager').css('right', '13px');
 
+  // 서브웨이 메뉴
   $('.upmenu ul li:nth-child(1)').click(function () {
     $('.menu_img .image').removeClass('on');
     $('.menu_img #classic').addClass('on');
@@ -93,6 +99,7 @@ $(function () {
     return false;
   });
 
+
   // 팝업
   if ($.cookie('popup') == 'none') {
     $('.popup').hide();
@@ -105,8 +112,8 @@ $(function () {
 
   $('.popup .closewrap').on('click', closepop);
   function closepop() {
-      $.cookie('popup', 'none', { expires: 7 });  
-      $('.popup').hide();
+    $.cookie('popup', 'none', { expires: 7 });
+    $('.popup').hide();
   }
 
 });
