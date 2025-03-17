@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //자바스크립트 객체
+        //키(name)와 값(Alice)(속성)의 쌍으로 이루어진 데이터 구조.
+        const person = {
+            name: "Alice",
+            age: 25,
+            isStudent: false,
+            greet: function () {
+                document.writeln("Hello, my name is " + this.name + "<br>");
+            }
+        };
+        document.write(person.name, "<br>");
+        document.write(person["age"], "<br>");
+        person.greet();
+
+        // 제이슨 데이터. 데이터를 저장하고 전송하는 형식
+        // 자바스크립트로 자바 객체를 제이슨 객체로 바꿔서 전송.
+        // {
+        //     "name": "Alice",
+        //     "age": 25,
+        //     "isStudent": false
+        // }
+
+        /* json과 객체변환
+        1) json -> 객체 */
+        const jsonString = '{"name": "Alice", "age": 25, "isStudent": false}'   //json 객체
+        const obj = JSON.parse(jsonString); //JSON -> 객체로 변환
+        console.log(obj.name);
+        // 출력: Alice
+
+        const person1 = {name: "Anne", age: 25, isStudent: false};  //자바 객체
+        const jsonString1 = JSON.stringify(person1);    //객체 -> JSON으로 변환
+        console.log(jsonString1);
+        // 출력: {"name":"Anne","age":25,"isStudent":false}
+
+    </script>
+</body>
+
+</html>

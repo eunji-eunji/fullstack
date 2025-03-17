@@ -8,8 +8,8 @@ public class Ari3 {
         double d=Double.parseDouble(strPi);
 
         double c=a+d;
-        System.out.printf("%d + %.2f = %.2f\n", a,d,c);
-        System.out.println(a+d);
+        System.out.printf("%d + %.2f = %.2f\n", a,d,c); //10.14
+        System.out.println(a+d);   //10.14
 
         int x=5;
         int y=2;

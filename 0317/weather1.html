@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<script>
+    // w3school getjson 검색 - 아래 함수 붙여넣기. api 주소 붙여넣기
+$.getJSON("https://api.openweathermap.org/data/2.5/forecast?id=1835848&appid=a0723091077a228ee3d462f5d0671095&units=metric", function(data){
+    // alert(data.cod)
+    // alert(data.city.name)
+    // alert(data.list[0].main.temp)
+    var $cTemp = data.list[0].main.temp;
+    var $maxTemp = data.list[0].main.temp_max;
+    var $minTemp = data.list[0].main.temp_min;
+    var $cData = data.list[0].dt_txt;
+    var $wIcon = data.list[0].weather[0].icon;
+
+    $('.temp').append($cTemp);
+    $('.clowtemp').append($minTemp);
+    $('.chigntemp').append($maxTemp);
+    $('h2').prepend($cData);
+    $('.cicon').append('<img src="https://openweathermap.org/img/wn/'+$wIcon+'@4x.png">') // @4x, @2x 등 : 크기
+});
+</script>
+<body>
+    <h1>weather api</h1>
+    <h2> - 날씨예보</h2>
+    <div class="temp">현재 온도: </div>
+    <div class="clowtemp">최저 온도: </div>
+    <div class="chigntemp">최고 온도: </div>
+    <div class="cicon">아이콘: </div>
+    <!-- <img src="https://openweathermap.org/img/wn/03d@2x.png" alt=""> -->
+
+    <!-- 아이콘의 주소 가져오는 사이트 -->
+    <!-- https://openweathermap.org/weather-conditions -->
+</body>
+</html>
