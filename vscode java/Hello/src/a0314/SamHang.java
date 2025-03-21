@@ -15,15 +15,15 @@ public class SamHang {
         System.out.println("age = " + age + " status = " + status);
 
         int distance;
-        Scanner scan=new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         System.out.println("distance: ");
-        distance=scan.nextInt();
+        distance = scan.nextInt();
 
-        if(distance<=1)
+        if (distance <= 1)
             System.out.println("도보를 이용하세요.");
-        else if(distance>1&&distance<=10)
+        else if (distance > 1 && distance <= 10)
             System.out.println("자전거를 이용하세요.");
-        else if(distance>10 && distance<=100)
+        else if (distance > 10 && distance <= 100)
             System.out.println("자동차를 이용하세요.");
         else
             System.out.println("비행기를 이용하세요.");
