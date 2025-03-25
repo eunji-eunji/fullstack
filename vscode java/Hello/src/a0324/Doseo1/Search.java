@@ -46,17 +46,51 @@ public class Search {
                     String addtitle = scan.nextLine();
                     System.out.print("작가: ");
                     String addauthor = scan.nextLine();
-                    System.out.println("위치: ");
+                    System.out.print("위치: ");
                     String addlocation = scan.nextLine();
-                    System.out.println("ISBN: ");
+                    System.out.print("ISBN: ");
                     String addisbn = scan.nextLine();
-                    scan.nextLine();    //개행문자 초기화
+                    scan.nextLine(); // 개행문자 초기화
                     manager.addLibrary(addtitle, addauthor, addlocation, addisbn);
                     System.out.println("도서 추가 완료");
                     break;
                 case 5:
                     System.out.println("도서 삭제하기");
-                    
+                    System.out.print("삭제하려는 도서 이름을 입력하세요.");
+                    String dname = scan.nextLine();
+                    if (dname.equals("")) {
+                        System.out.print("삭제하려는 도서 이름을 다시 입력하세요.\n 이름 >> ");
+                        dname = scan.nextLine();
+                    }
+                    manager.delLibrary(dname);
+                    break;
+                case 6:
+                    System.out.println("도서 정보 수정하기");
+                    System.out.println("수정하려는 도서 이름을 입력하세요.");
+                    String uname = scan.nextLine();
+                    if (uname.equals("")) {
+                        System.out.println("수정하려는 도서 이름을 다시 입력하세요.\n 이름 >> ");
+                        uname = scan.nextLine();
+                    }
+                    manager.updateLibrary(uname);
+                    break;
+                case 7:
+                    System.out.println("도서 내용 보기");
+                    System.out.println("조회하려는 도서 이름을 입력하세요.");
+                    String sname = scan.nextLine();
+                    if (sname.equals("")) {
+                        System.out.println("조회하려는 도서 이름을 다시 입력하세요.\n 이름 >> ");
+                        sname = scan.nextLine();
+                    }
+                    manager.showLibrary(sname);
+                    System.out.println("조회되었습니다.");
+                    break;
+                case 8:
+                    flag=false;
+                    System.out.println("종료");
+                    scan.close();
+                    System.exit(0);
+                    break;
                 default:
                     break;
             }
