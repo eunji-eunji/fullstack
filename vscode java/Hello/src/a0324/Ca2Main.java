@@ -1,0 +1,16 @@
+package a0324;
+
+public class Ca2Main {
+    public static void main(String[] args) {
+        Car2 c1 = new Car2();
+        Car2 c2 = new Car2("중형차");
+        Car2 c3 = new Car2("현대", "대형차");
+        Car2 c4 = new Car2("black", "kia", "소형차");
+    
+        System.out.println("c1 = "+c1.toString());
+        // .toString() 이 생략된 형태임. toString 함수가 없다면 주소만 반환함.
+        System.out.println("c2 = "+c2);
+        System.out.println("c3 = "+c3);
+        System.out.println("c4 = "+c4);
+    }
+}

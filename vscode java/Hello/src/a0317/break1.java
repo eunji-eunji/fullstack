@@ -1,3 +1,5 @@
+
+
 public class break1 {
     public static void main(String[] args) {
         // 1부터 숫자를 계속 누적해서 더하다가 합계가 10보다 처음으로 크면 멈추기
