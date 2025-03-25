@@ -86,7 +86,8 @@ public class LibraryManager {
                 index = i - 1; // index = 0 같은 이름 객체의 인덱스 번호
                 newA = a;
             }
-            // System.out.println(a.getTitile().equalsIgnoreCase(uname) + " " + a.getTitile() + " " + uname);
+            // System.out.println(a.getTitile().equalsIgnoreCase(uname) + " " +
+            // a.getTitile() + " " + uname);
         }
         if (index != -1) {
             System.out.print("수정할 사항\n 1.도서 이름 \t 2.도서 저자 \t 3.도서 위치 \t 4.도서ISBN \n >>");

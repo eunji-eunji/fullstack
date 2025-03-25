@@ -74,57 +74,54 @@ public class AgodaManager {
 
     // 6번 숙소 정보 수정하기
     public void agodaupdate(String updatename) {
-        String state = "false";
+        int i = 0;
+        int index = -1;
+        int menu = -1;
         boolean flag = true;
         Scanner scan = new Scanner(System.in);
+        Agoda newA = new Agoda();
 
-        for (Agoda a:agodas) {
+        for (Agoda a : agodas) {
+            i++;
             if (a.getName().equalsIgnoreCase(updatename)) {
-                if (a.isAvailable()) {
-                    System.out.println("1.이름 수정 | 2.위치 수정 | 3.가격 수정");
-                    System.out.print("선택 >> ");
-                    int choice = scan.nextInt();
-                    
-                    while (flag) {
-                        switch (choice) {
-                            case 1:
-                                System.out.print("수정할 이름 입력: ");
-                                String newname = scan.nextLine();
-                                a.setName(newname);
-                                // setName - 클래스의 private 변수의 값을 변경할 때 사용
-                                // arrayList의 값을 변경할 때는 set을 이용
-                                state="true";
-                                flag=false;
-                                break;
-                            case 2:
-                                System.out.print("수정할 위치 입력: ");
-                                String newlocation = scan.nextLine();
-                                a.setLocation(newlocation);
-                                state="true";
-                                flag=false;
-                                break;
-                            case 3:
-                                System.out.print("수정할 가격 입력: ");
-                                double newprice = scan.nextDouble();
-                                a.setPrice(newprice);
-                                state="true";
-                                flag=false;
-                                break;
-                            default:
-                                System.out.println("1~3번을 입력하세요.");
-                                break;
-                        }
-                    }
-                } else {
-                    state = "using";
-                    break;
-                }
+                index = i - 1;
+                newA = a;
             }
         }
-        if (state == "true") {
-            System.out.println("숙소가 수정되었습니다.");
-        } else if (state == "using") {
-            System.out.println("이용 중인 숙소는 수정할 수 없습니다.");
+        if (index != -1) {
+            System.out.println("1.이름 수정 | 2.위치 수정 | 3.가격 수정");
+            System.out.print("선택 >> ");
+            menu = scan.nextInt();
+            scan.nextLine(); 
+
+            while (flag) {
+                switch (menu) {
+                    case 1:
+                        System.out.print("수정할 이름 입력: ");
+                        newA.setName(scan.nextLine());
+                        agodas.set(index, newA);
+                        System.out.println("수정이 완료되었습니다.");
+                        flag = false;
+                        break;
+                    case 2:
+                        System.out.print("수정할 위치 입력: ");
+                        newA.setLocation(scan.nextLine());
+                        agodas.set(index, newA);
+                        System.out.println("수정이 완료되었습니다.");
+                        flag = false;
+                        break;
+                    case 3:
+                        System.out.print("수정할 가격 입력: ");
+                        newA.setPrice(scan.nextDouble());
+                        agodas.set(index, newA);
+                        System.out.println("수정이 완료되었습니다.");
+                        flag = false;
+                        break;
+                    default:
+                        System.out.println("1~3번을 입력하세요.");
+                        break;
+                }
+            }
         } else {
             System.out.println("해당 숙소가 없습니다.");
         }
