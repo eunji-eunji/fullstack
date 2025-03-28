@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class BookManager {
     Scanner scan = new Scanner(System.in);
     ArrayList<Book> list;
-    BookFile file=new BookFile("book", "books");
+    BookFile file = new BookFile("book", "books");
 
     public BookManager() {
         list = new ArrayList<Book>();
@@ -22,7 +22,6 @@ public class BookManager {
         System.out.println("<도서 추가>");
         System.out.print("책 제목: ");
         String name = scan.nextLine();
-        scan.nextLine();
         System.out.print("저자: ");
         String author = scan.nextLine();
         System.out.print("ISBN: ");
@@ -84,18 +83,22 @@ public class BookManager {
     }
 
     // 6번 도서 목록 파일로 저장
-    public void fileSave() {
+    public void fileSave() throws Exception{
         file.create();
-        String str="";
-        for(int i=0;i<list.size();i++){
-            str+=list.get(i).toString()+"\n";
+        String str = "";
+        for (int i = 0; i < list.size(); i++) {
+            str += list.get(i).toString() + "\n";
         }
         file.write(str);
     }
 
     // 7번 파일 불러오기
-    public void fileLoad() {
-
+    public void fileLoad() throws Exception{
+        try {
+            file.read();
+        } catch (Exception e) {
+            System.out.println("읽을 파일이 없습니다.");
+        }
     }
 
     // 책 찾기

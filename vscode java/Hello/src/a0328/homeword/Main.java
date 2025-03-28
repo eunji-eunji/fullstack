@@ -3,7 +3,7 @@ package a0328.homeword;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         BookManager manager = new BookManager();
         Scanner scan = new Scanner(System.in);
 

@@ -9,6 +9,7 @@ public class Input3 {
 
         byte[] a=new byte[3];
         in.read(a);
+        // read() 메소드를 통해 a 배열을 키보드로 입력받음
 
         System.out.println(a[0]);
         System.out.println(a[1]);
