@@ -55,8 +55,7 @@ public class FlightManager {
                 if (bookNum > flights.size() || bookNum < 1) {
                     // 예약할 수 잇는 목록의 개수보다 크거나 목록이 없으면
                     System.out.println("잘못된 입력압니다.");
-                    continue;
-                    // 재입력
+                    continue; // 재입력
                 }
                 System.out.println("선택한 항공편");
                 System.out.println("===============================");
@@ -123,6 +122,7 @@ public class FlightManager {
         return seatNum;
     }
 
+
     private void passengerInfo(Flight flight) {
         System.out.println("예매자 정보를 입력하세요.");
         System.out.print("이름: ");
@@ -152,6 +152,22 @@ public class FlightManager {
 
     }
 
+    private int search(String str) {
+        System.out.println("===================== " + str + " =====================");
+        System.out.print("예약자 이름: ");
+        String name = sc.next();
+        sc.nextLine();
+        int index = -1;
+        if (passengers != null) {
+            for (int i = 0; i < passengers.size(); i++) {
+                if (passengers.get(i).getName().equals(name)) {
+                    index = i;
+                }
+            }
+        }
+        return index;
+    }
+    
     private void checkPassword(int index) {
         for (;;) {
             if (index != -1) {
@@ -184,21 +200,6 @@ public class FlightManager {
                 "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ";
     }
 
-    private int search(String str) {
-        System.out.println("===================== " + str + " =====================");
-        System.out.print("예약자 이름: ");
-        String name = sc.next();
-        sc.nextLine();
-        int index = -1;
-        if (passengers != null) {
-            for (int i = 0; i < passengers.size(); i++) {
-                if (passengers.get(i).getName().equals(name)) {
-                    index = i;
-                }
-            }
-        }
-        return index;
-    }
 
     public void ticketSave() {
         int index=search("티켓조회");

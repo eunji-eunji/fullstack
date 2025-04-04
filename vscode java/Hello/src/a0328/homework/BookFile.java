@@ -1,4 +1,4 @@
-package a0328.homeword;
+package a0328.homework;
 
 import java.io.BufferedReader;
 import java.io.File;

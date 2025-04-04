@@ -10,16 +10,15 @@ public class Customer {
 
     private String pw;
     private String seat;
-    Customer c = new Customer();
 
     public Customer(String name, int birthDate, String pw) {
         this.name = name;
         this.birthDate = birthDate;
         this.pw = pw;
 
-        if (age(c) >= 20) { // 성인 가격 14,000원
+        if (age(birthDate) >= 20) { // 성인 가격 14,000원
             price = 14000;
-        } else if (age(c) >= 14 && age(c) < 20) { // 중고등학생 가격 11,000원
+        } else if (age(birthDate) >= 14 && age(birthDate) < 20) { // 중고등학생 가격 11,000원
             price = 11000;
         } else { // 0~13세 가격 8,000원
             price = 8000;
@@ -32,6 +31,7 @@ public class Customer {
     public Customer(String name, int birthDate) {
         this.name = name;
         this.birthDate = birthDate;
+
     }
 
     public String getName() {
@@ -71,10 +71,10 @@ public class Customer {
     }
 
     // 예매자 나이 출력
-    public int age(Customer c) { // 830101
-        int y = c.birthDate / 10000; // 83
-        int m = (c.birthDate % 10000) / 100; // 01
-        int d = c.birthDate % 100; // 01
+    public int age(int birthDate) { // 830101
+        int y = birthDate / 10000; // 83
+        int m = (birthDate % 10000) / 100; // 01
+        int d = birthDate % 100; // 01
 
         // 연도를 4자리로 표현
         if (y > 0 && y <= 25) {

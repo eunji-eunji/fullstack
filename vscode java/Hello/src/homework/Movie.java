@@ -1,12 +1,10 @@
 package homework;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Movie {
     private String movieName;
     private String time;
-    private DecimalFormat priceFormat = new DecimalFormat("#,###원");
     private int viewableAge; // 시청 가능 연령
     private ArrayList<String> seats;
 
@@ -26,14 +24,6 @@ public class Movie {
         this.time = time;
     }
 
-    public DecimalFormat getPriceFormat() {
-        return priceFormat;
-    }
-
-    public void setPriceFormat(DecimalFormat priceFormat) {
-        this.priceFormat = priceFormat;
-    }
-
     public int getViewableAge() {
         return viewableAge;
     }
@@ -50,7 +40,6 @@ public class Movie {
         this.seats = seats;
     }
 
-    //
     public Movie(String movieName, String time, int viewableAge) {
         this.movieName = movieName;
         this.time = time;
@@ -78,19 +67,40 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie [영화제목: " + movieName + ", 시작시간: " + time +
-                ", 시청가능연령: " + viewableAge;
+        return "   [영화제목: " + movieName + ", 시작시간: " + time +
+                ", 시청가능연령: " + viewableAge + "세 이상]";
     }
 
-    // 좌석 보여줌
+    // 좌석 프린트
     public void seatToString() {
         System.out.println("|            screen            |");
         System.out.println("  ------------------------------");
-        System.out.println("A | [1][2] [3][4][5][6] [7][8] |");
-        System.out.println("B | [1][2] [3][4][5][6] [7][8] |");
-        System.out.println("C | [1][2] [3][4][5][6] [7][8] |");
-        System.out.println("D | [1][2] [3][4][5][6] [7][8] |");
-        System.out.println("E | [1][2] [3][4][5][6] [7][8] |");
+        System.out.print("A | ");
+        printRow(8);
+        System.out.print("B | ");
+        printRow(16);
+
+        System.out.print("C | ");
+        printRow(24);
+
+        System.out.print("D | ");
+        printRow(32);
+
+        System.out.print("E | ");
+        printRow(40);
+
         System.out.println("  ------------------------------");
+    }
+
+    private void printRow(int index) {
+        int count=0;
+        for (int i = (index - 8); i < index; i++) {
+            if (count==2 || count==6) {
+                System.out.print(" ");
+            }
+            System.out.printf("[%s]", seats.get(i));
+            count++;
+        }
+        System.out.println();
     }
 }
