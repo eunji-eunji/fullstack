@@ -19,12 +19,7 @@ public class MovieManager {
 
     public MovieManager() {
         movies = new ArrayList<>();
-        movies.add(new Movie("승부", "9:50", 0));
-        movies.add(new Movie("로비", "11:30", 12));
-        movies.add(new Movie("미키17", "15:10", 15));
         customers = new ArrayList<>();
-        Movie mv = movies.get(0);
-        reservationMap.put("테스트", mv);
     }
 
     public void displayMovieList(String str) {
@@ -63,14 +58,15 @@ public class MovieManager {
 
                 if (customers != null && !customers.isEmpty()) {
                     String seatNum = Integer.toString(seatSelection(mv));
+                    // 숫자 0~39를 String으로 변경하여 customers의 seat에 저장
                     customers.get(customers.size() - 1).setSeat(seatNum);
                     System.out.println("예약 중입니다.");
                     Thread.sleep(2000);
 
                     System.out.println("===============================");
                     System.out.println("예약이 완료되었습니다.");
-                    System.out.println("      [" + customers.get(customers.size() - 1).getName() + "] 님의 예약 정보");
-                    System.out.println("  "+bookNum + "" + mv);
+                    System.out.println("      [" + customers.get(customers.size() - 1).getName() + "] 님의 예약 정보   ");
+                    System.out.println("  " + bookNum + "" + mv);
                     System.out.println("===============================");
                     System.out.println("잠시 후 메인 화면으로 이동합니다.");
                     Thread.sleep(2000);
@@ -128,6 +124,7 @@ public class MovieManager {
                         break;
                 }
 
+                // 좌석 배열의 인덱스 번호
                 int finalIndex = seatInt + rowOffset;
 
                 // 이미 예약된 좌석인지 확인
@@ -140,6 +137,7 @@ public class MovieManager {
 
                 // 변경이 성공적으로 적용되었는지 확인
                 if (mv.getSeats().get(finalIndex).equals("X")) {
+                    // seatLine: 좌석 열(A-E) / seatInt: 0~7
                     System.out.println("좌석 선택이 완료되었습니다: " + seatLine + (seatInt + 1));
                     seatNum = finalIndex;
                     flag = false; // 정상적으로 좌석 선택 완료
@@ -151,6 +149,7 @@ public class MovieManager {
                 System.out.println("잘못된 입력입니다.");
             }
         }
+        // seatNum: 0~39의 숫자
         return seatNum;
     }
 
@@ -222,6 +221,7 @@ public class MovieManager {
         if (index != -1) {
             System.out.print("결제 비밀번호 입력: ");
             String pw = sc.next();
+            sc.nextLine();
             System.out.println();
             if (customers.get(index).getPw().equals(pw)) {
                 System.out.println("비밀번호가 일치합니다.");
@@ -268,11 +268,11 @@ public class MovieManager {
             seatName = "E" + seat;
         }
 
-        String priceComma=priceFormat.format(bookPrice);
+        String priceComma = priceFormat.format(bookPrice);
         return "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n" +
                 "\t" + name + "님의 티켓정보" +
-                "| 좌석 : " + seatName + "번 | 가격: "+priceComma +"\n"+
-                 reservationMap.get(name) +"\n" +
+                "| 좌석 : " + seatName + "번 | 가격: " + priceComma + "\n" +
+                reservationMap.get(name) + "\n" +
                 "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n";
     }
 
@@ -294,4 +294,139 @@ public class MovieManager {
     public static Map<String, Movie> getReservatioMap() {
         return reservationMap;
     }
+
+    // 예매 취소
+    public void ticketCancel() {
+        int index = search("예약 확인");
+        if (index == -1) {
+            System.out.println("예약된 내역이 없습니다.");
+            return;
+        }
+        checkPassword(index);
+
+        Customer customer = customers.get(index);
+        // 영화 객체를 Map에서 가져옴
+        Movie reservedMovie = reservationMap.get(customer.getName());
+
+        Movie originalMovie = null;
+        for (Movie m : movies) {
+            if (m.getMovieName().equals(reservedMovie.getMovieName())) {
+                originalMovie = m;
+                break;
+            }
+        }
+
+        if (originalMovie == null) {
+            System.out.println("해당 영화를 찾을 수 없습니다.");
+            return;
+        }
+
+        // 좌석 복구
+        String seat = customer.getSeat(); // ex) String 타입 0~39(인덱스 번호)
+        // System.out.println("취소할 좌석: "+seat);
+        int seatInt = Integer.parseInt(seat); // int 타입 0~39(인덱스 번호)
+        // String seatIndex=null; // 1~8 까지의 숫자
+        if (seatInt != -1) {
+            if (seatInt < 8) { // 0~7
+                seat = (seatInt + 1) + ""; // 0~7의 String 타입으로 변경
+            } else if (seatInt >= 8 && seatInt < 16) { // 8~15
+                seat = (seatInt - 7) + "";
+            } else if (seatInt >= 16 && seatInt < 24) { // 16~23
+                seat = (seatInt - 15) + "";
+            } else if (seatInt >= 24 && seatInt < 32) { // 24~31
+                seat = (seatInt - 23) + "";
+            } else if (seatInt >= 32 && seatInt < 40) { // 32~39
+                seat = (seatInt - 31) + "";
+            }
+        } else {
+            System.out.println("취소할 수 없습니다.");
+            return;
+        }
+
+        originalMovie.getSeats().set(seatInt, seat);
+
+        // 고객 정보 및 예매 정보 제거
+        reservationMap.remove(customer.getName());
+        customers.remove(index);
+        System.out.println("예매가 취소되었습니다.");
+    }
+
+    // 영화 등록
+    public void resister() {
+        System.out.print("등록할 영화 제목: ");
+        String name = sc.nextLine();
+        for (int i = 0; i < movies.size(); i++) {
+            if (name.equalsIgnoreCase(movies.get(i).getMovieName())) {
+                System.out.println("이미 등록된 영화입니다.");
+                return;
+            }
+        }
+        System.out.print("영화 시작 시간: ");
+        String time = sc.nextLine();
+        System.out.print("영화 시청 연령: ");
+        int age = sc.nextInt();
+        Movie newMovie = new Movie(name, time, age);
+        movies.add(newMovie);
+        System.out.println("영화가 등록되었습니다.");
+        fc.saveMovieList();
+    }
+
+    // 영화 수정
+    public void change() {
+        System.out.print("수정할 영화 제목: ");
+        String existName = sc.nextLine();
+        for (int i = 0; i < movies.size(); i++) {
+            if (existName.equalsIgnoreCase(movies.get(i).getMovieName())) {
+                System.out.println("\n1.영화 제목 수정\n2.영화 시작시간 수정\n3.영화 시청 가능 연령 수정\n");
+                System.out.print("메뉴 > ");
+                int menu = sc.nextInt();
+                sc.nextLine();
+                switch (menu) {
+                    case 1:
+                        System.out.print("수정할 영화 제목 입력: ");
+                        String newName = sc.nextLine();
+                        movies.get(i).setMovieName(newName);
+                        break;
+                    case 2:
+                        System.out.print("수정할 영화 시작시간 입력: ");
+                        String newTime = sc.nextLine();
+                        movies.get(i).setTime(newTime);
+                        break;
+                    case 3:
+                        try {
+                            System.out.print("수정할 영화 시청가능 연령 입력: ");
+                            int newAge = sc.nextInt();
+                            movies.get(i).setViewableAge(newAge);
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("숫자만 입력하세요.");
+                        }
+                    default:
+                        System.out.println("잘못 입력하셨습니다.");
+                        break;
+                }
+                fc.saveMovieList();
+                return;
+            }
+        }
+        System.out.println("존재하지 않는 영화입니다.");
+        return;
+    }
+
+    // 영화 삭제
+    public void remove() {
+        System.out.print("삭제할 영화 제목: ");
+        String existName = sc.nextLine();
+        for (int i = 0; i < movies.size(); i++) {
+            if (existName.equalsIgnoreCase(movies.get(i).getMovieName())) {
+                movies.remove(i);
+                System.out.println("영화가 삭제되었습니다.");
+                fc.saveMovieList();
+                return;
+            }
+        }
+        System.out.println("존재하지 않는 영화입니다.");
+        return;
+    }
+
 }
