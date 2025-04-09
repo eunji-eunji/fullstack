@@ -1,4 +1,4 @@
-package homework;
+package movie_test;
 
 import java.util.Scanner;
 
@@ -7,8 +7,10 @@ public class MovieReservation {
         MovieManager manager = new MovieManager();
         Scanner sc = new Scanner(System.in);
         FileC fc = new FileC();
-        fc.upload(); // 파일에서 영화 목록 불러옴
 
+        fc.upload(); // D:/movie/list.txt 파일에서 영화 목록 불러옴
+
+        // 관리자 모드 비밀번호
         String adminPassword = "admin0317";
 
         System.out.println();
@@ -53,30 +55,39 @@ public class MovieReservation {
                     break;
                 // 6. 관리자 모드 입장
                 case 6:
-                    System.out.println("관리자 비밀번호를 입력하세요.");
+                    System.out.println("관리자 비밀번호를 입력하세요."); // 비밀번호: admin0317
                     System.out.print("입력: ");
                     String admin = sc.nextLine();
+                    // sc.nextLine();
                     if (admin.equals(adminPassword)) {
                         System.out.println("관리자 모드로 변경되었습니다.");
-                        System.out.println("1.영화 등록 / 2.영화 수정 / 3.영화 삭제");
-                        System.out.print("메뉴 > ");
-                        int adaminMenu = sc.nextInt();
-                        switch (adaminMenu) {
-                            // 영화 등록
-                            case 1:
-                                manager.resister();
-                                break;
-                            // 영화 수정
-                            case 2:
-                                manager.change();
-                                break;
-                            // 영화 삭제
-                            case 3:
-                                manager.remove();
-                                break;
-                            default:
-                                System.out.println("잘못 입력하셨습니다.");
-                                break;
+                        boolean flag=true;
+                        while (flag) {
+                            System.out.println("1.영화 등록 / 2.영화 수정 / 3.영화 삭제 / 0.관리자 모드 종료");
+                            System.out.print("메뉴 > ");
+                            int adaminMenu = sc.nextInt();
+                            sc.nextLine();
+                            switch (adaminMenu) {
+                                // 영화 등록
+                                case 1:
+                                    manager.resister();
+                                    break;
+                                // 영화 수정
+                                case 2:
+                                    manager.change();
+                                    break;
+                                // 영화 삭제
+                                case 3:
+                                    manager.remove();
+                                    break;
+                                case 0:
+                                    System.out.println("관리자 모드를 종료합니다.");
+                                    flag=false;
+                                    break;
+                                default:
+                                    System.out.println("잘못 입력하셨습니다.");
+                                    break;
+                            }
                         }
                         break;
                     } else {

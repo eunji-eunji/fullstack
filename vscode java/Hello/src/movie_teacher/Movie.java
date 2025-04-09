@@ -26,7 +26,7 @@ public class Movie {
         this.title = title;
         this.genre = genre;
     }
-    private static final File file = new File("d:\\junsuk\\movies.txt");
+    private static final File file = new File("D:\\NohEunji\\vscode java\\Hello\\src\\movie_teacher\\movies.txt");
     public Movie(long id, String title, String genre) {
         this.id = id;
         this.title = title;

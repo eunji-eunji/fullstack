@@ -5,12 +5,14 @@ public class Singleton {
     private static Singleton instance = new Singleton();
     // 생성자에 private 접근 제어
     
+     // 생성자를 private으로 막아서 외부에서 new로 생성 못하게 함
     private Singleton(){
         System.out.println("객체 생성");
     }
 
     // static 메서드
     public static Singleton getInstance(){
+        
         System.out.println("객체 리턴");
         return instance;
     }

@@ -1,4 +1,4 @@
-package homework;
+package movie_test;
 
 import java.text.DecimalFormat;
 import java.time.DateTimeException;
@@ -54,7 +54,9 @@ public class MovieManager {
                 System.out.println(bookNum + "" + movies.get(bookNum - 1));
                 System.out.println("===============================");
                 Movie mv = movies.get(bookNum - 1);
-                customerInfo(mv);
+                if (customerInfo(mv) == false) {
+                    break;
+                }
 
                 if (customers != null && !customers.isEmpty()) {
                     String seatNum = Integer.toString(seatSelection(mv));
@@ -154,7 +156,7 @@ public class MovieManager {
     }
 
     // 고객 정보
-    private void customerInfo(Movie mv) {
+    private boolean customerInfo(Movie mv) {
         System.out.println("\n예매자 정보를 입력하세요.(0: 메뉴)");
         System.out.print("이름: ");
         String name = sc.next();
@@ -162,17 +164,16 @@ public class MovieManager {
         // 메뉴로 돌아가기
         if (name.equals("0")) {
             System.out.println("메뉴로 돌아갑니다.");
-            return;
+            return false;
         }
-
         System.out.print("생년월일(6자리): ");
         try {
             int birthDate = Integer.parseInt(sc.next());
 
             // 메뉴로 돌아가기
             if (birthDate == 0) {
-                System.out.println("이전으로 돌아갑니다.");
-                return;
+                System.out.println("메뉴로 돌아갑니다.");
+                return false;
             }
 
             Customer c = new Customer(name, birthDate);
@@ -183,10 +184,12 @@ public class MovieManager {
                 customers.add(c);
             } else {
                 System.out.println(mv.getViewableAge() + "세 미만은 시청할 수 없습니다.");
-                return;
+                return false;
             }
+            return true;
         } catch (DateTimeException e) {
             System.out.println("생년월일을 6자리로 입력해주세요. ex)990101");
+            return false;
         }
     }
 
@@ -322,13 +325,11 @@ public class MovieManager {
         }
 
         // 좌석 복구
-        String seat = customer.getSeat(); // ex) String 타입 0~39(인덱스 번호)
-        // System.out.println("취소할 좌석: "+seat);
-        int seatInt = Integer.parseInt(seat); // int 타입 0~39(인덱스 번호)
-        // String seatIndex=null; // 1~8 까지의 숫자
+        String seat = customer.getSeat(); // ex) String 타입 0~39(배열 인덱스 번호)
+        int seatInt = Integer.parseInt(seat); // int 타입 0~39(배열 인덱스 번호)
         if (seatInt != -1) {
             if (seatInt < 8) { // 0~7
-                seat = (seatInt + 1) + ""; // 0~7의 String 타입으로 변경
+                seat = (seatInt + 1) + ""; // int 타입에서 0~7의 String 타입으로 변경
             } else if (seatInt >= 8 && seatInt < 16) { // 8~15
                 seat = (seatInt - 7) + "";
             } else if (seatInt >= 16 && seatInt < 24) { // 16~23
@@ -342,7 +343,7 @@ public class MovieManager {
             System.out.println("취소할 수 없습니다.");
             return;
         }
-
+        // 영화의 좌석을 'X'에서 숫자로 변경
         originalMovie.getSeats().set(seatInt, seat);
 
         // 고객 정보 및 예매 정보 제거
@@ -363,12 +364,16 @@ public class MovieManager {
         }
         System.out.print("영화 시작 시간: ");
         String time = sc.nextLine();
-        System.out.print("영화 시청 연령: ");
-        int age = sc.nextInt();
-        Movie newMovie = new Movie(name, time, age);
-        movies.add(newMovie);
-        System.out.println("영화가 등록되었습니다.");
-        fc.saveMovieList();
+        try {
+            System.out.print("영화 시청 연령: ");
+            int age = sc.nextInt();
+            Movie newMovie = new Movie(name, time, age);
+            movies.add(newMovie);
+            System.out.println("영화가 등록되었습니다.");
+            fc.saveMovieList();
+        } catch (NumberFormatException e) {
+            System.out.println("숫자만 입력하세요.");
+        }
     }
 
     // 영화 수정

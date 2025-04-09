@@ -1,4 +1,4 @@
-package homework;
+package movie_test;
 
 import java.util.ArrayList;
 
