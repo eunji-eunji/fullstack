@@ -1,10 +1,7 @@
 package gpt_bank;
 
-import bank_test.InputReader;
-import bank_test.Menu;
-
 public class MainApp {
-      public static void main(String[] args) {
+    public static void main(String[] args) {
         System.out.println("\uD83D\uDCB3 은행 관리 프로그램 시작");
 
         InputReader inputReader = new InputReader();

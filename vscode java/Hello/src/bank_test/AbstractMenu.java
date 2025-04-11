@@ -1,6 +1,6 @@
-package gpt_bank;
+package bank_test;
 
-public abstract class AbstractMenu implements Menu{
+public abstract class AbstractMenu implements Menu {
     protected String title;
 
     public AbstractMenu(String title) {
