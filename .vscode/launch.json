@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MainApp",
+            "request": "launch",
+            "mainClass": "bank_test.MainApp",
+            "projectName": "fullstack_bef0d481"
+        },
+        {
+            "type": "java",
             "name": "SingletonMain",
             "request": "launch",
             "mainClass": "a0324.SingletonMain",
