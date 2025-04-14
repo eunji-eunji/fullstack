@@ -41,7 +41,7 @@ public class BankService {
 
     // 계좌 삭제 - adminService를 통해 호출
     protected boolean deleteAccount(String number) {
-        // 계좌번호가 존재하면 계좌를 삭제하고 해당 계좌 반환. -> true
+        // 계좌번호가 존재하면 계좌를 삭제하고 해당 계좌 반환 -> true
         // 계좌가 없으면 null 반환. -> false
         return accounts.remove(number) != null;
     }

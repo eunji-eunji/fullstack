@@ -24,7 +24,7 @@ public class MainMenu extends AbstractMenu {
                 String name = input.readLine("이름: ");
                 String birth = input.readLine("생년월일(YYYYMMDD): ");
                 String pw = input.readLine("비밀번호: ");
-                int money = input.readInt("초기 입금액: ");
+                int money = input.readInt("초기 입금액(1000원 이상): ");
                 Account acc = bankService.createAccount(name, birth, pw, money);
                 if (acc != null) {
                     System.out.println("계좌 생성 완료: " + acc.getAccountNumber());
