@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Membership {
     Scanner sc = new Scanner(System.in);
     // 싱글톤 객체 생성
-    private static Membership m;
+    private static Membership m = new Membership();
 
     public static Membership getInstance() {
         if (m == null) {

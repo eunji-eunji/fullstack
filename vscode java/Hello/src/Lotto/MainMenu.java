@@ -1,15 +1,11 @@
 package Lotto;
 
-import java.lang.reflect.Member;
-
-
-class MainMenu extends AbstractMenu implements Menu{
-
-
+class MainMenu extends AbstractMenu {
     private static final MainMenu instance = new MainMenu();
     public static MainMenu getInstance() {
         return instance;
-    } // 메인메뉴에 대한 싱글톤패턴 -
+    } // 메인메뉴에 대한 싱글톤패턴
+
     private static final String MAIN_MENU_TEXT =
     " \n\n ##        ####    ######   ######   ######   #####    ##  ##  \r\n"
 				+ " ##       ##  ##     ##       ##     ##       ##  ##   ##  ##  \r\n"
@@ -19,7 +15,7 @@ class MainMenu extends AbstractMenu implements Menu{
     "\n =================================== 복권시스템 =================================== \n" +
     "1. 회원 로그인 \n" +
     "2. 관리자 로그인 \n" +
-    "3. 회원가입 \n" +   // Membership이라 이어지게
+    "3. 회원가입 \n" +   // Membership이랑 이어지게
     "4. 종료 \n\n" +
     "메뉴를 선택하세요 : ";
 

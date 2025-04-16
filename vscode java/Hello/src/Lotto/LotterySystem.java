@@ -4,24 +4,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class LotterySystem {
-      private static Admin admin;
-    // private static List<Member> members;
-    private static Scanner scanner;
-
-    // public static void main(String[] args) {
-    //     initialize();
-    //     showMainMenu();
-    //     saveData();
-    // }
-
-    // private static void initialize() {
-    //     admin = FileManager.loadAdmin();
-    //     members = FileManager.loadMembers();
-    //     scanner = new Scanner(System.in);
-    // }
+    private static List<Member> members;
+    private static Scanner scanner = new Scanner(System.in);
 
     private static void saveData() {
-        FileManager.saveAdmin(admin);
         FileManager.saveMembers(members);
     }
 
@@ -45,7 +31,7 @@ public class LotterySystem {
                     member.buyLottery(false);
                     break;
                 case 3:
-                    List<Integer> winningNumbers = admin.generateWinningNumbers();
+                    List<Integer> winningNumbers = generateWinningNumbers();
                     member.checkWinning(winningNumbers);
                     break;
                 case 4:

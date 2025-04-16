@@ -5,6 +5,13 @@
             "name": "MainApp",
             "request": "launch",
             "mainClass": "bank_test.MainApp",
+            "projectName": "NohEunji_69de0a8f"
+        },
+        {
+            "type": "java",
+            "name": "MainApp",
+            "request": "launch",
+            "mainClass": "bank_test.MainApp",
             "projectName": "fullstack_bef0d481"
         },
         {
