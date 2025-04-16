@@ -45,12 +45,12 @@ void borrow(vector<book>& library) {
 // 반납 함수
 // C++은 기본적으로 값 복사를 하기 때문에 메인 함수 바깥에서 값을 변경하고 싶으면 
 // 명시적으로 &를 붙여야 참조가 됨
-void returnBook(vector<book>& library){
+void returnBook(vector<book>& library) {
     cout << "\n[도서 반납]\n";
     cout << "반납할 도서 번호 입력: ";
     int bookNum;
     cin >> bookNum;
-    if(library.at(bookNum-1).available == true){
+    if(library.at(bookNum-1).available == true) {
         cout << "반납할 도서가 없습니다.\n";
     } else {
         library.at(bookNum-1).available = true;
@@ -87,6 +87,5 @@ int main() {
         } else {
             cout << "잘못 입력하셨습니다.";
         }
-
     }
 }

@@ -31,14 +31,14 @@ int main() {
 
     return 0;
 }
-    // push_front(10) : 맨 앞에 값 넣기
-    // push_back(10) : 맨 뒤에 값 넣기
+// push_front(10) : 맨 앞에 값 넣기
+// push_back(10) : 맨 뒤에 값 넣기
 
-    // pop_front() : 맨 앞 값 꺼내기
-    // pop_back() : 맨 뒤 값 꺼내기
+// pop_front() : 맨 앞 값 꺼내기
+// pop_back() : 맨 뒤 값 꺼내기
 
-    // front() : 맨 앞 값 확인
-    // back() : 맨 뒤 값 확인
-    
-    // empty() : 비어 있으면 true
-    // size() : 스택 크기
+// front() : 맨 앞 값 확인
+// back() : 맨 뒤 값 확인
+
+// empty() : 비어 있으면 true
+// size() : 스택 크기
