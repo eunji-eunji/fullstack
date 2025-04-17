@@ -10,5 +10,6 @@ int main() {
     for(string car : cars){
         cout << car << "\n"; 
     }
+    
     return 0;
 }

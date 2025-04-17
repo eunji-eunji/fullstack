@@ -5,7 +5,7 @@ using namespace std;
 class MyClass {
     public:
         void function() {
-            cout << "some content in parent class";
+            cout << "some content in parent class" << endl;
         }
 };
 
@@ -17,8 +17,9 @@ class Grandchild: public Child{
 };
 
 int main(){
+    Child child;
     Grandchild obj;
     obj.function();
-    cout << obj.function();
+    child.function();
     return 0;
 }
