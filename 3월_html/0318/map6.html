@@ -48,7 +48,6 @@
       <div id="amap3" class="map"  data-lat="37.566419" data-lng="126.9079054">
       
       </div>
-   
    </div>
 
    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -83,7 +82,6 @@
 
       });
 
-
       function accodionMap(lat, lng, tdiv){
 
          var container = document.getElementById(tdiv);
@@ -94,9 +92,6 @@
 
          var map = new kakao.maps.Map(container, options);
          }
-
-
-
 
       $( "#accordion" ).accordion({
          create: function( event, ui ) {
@@ -112,8 +107,6 @@
             accodionMap(lat, lng, target);
          }
       });
-
-
    </script>
 </body>
 </html>
