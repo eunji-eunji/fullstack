@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -46,6 +47,36 @@ public class BoardController {
         return "board-list";
     }
 
+    @GetMapping("/boards/edit/{id}")
+    public String editForm(@PathVariable Long id, HttpSession session, Model model){
+        Member loginUser =(Member)session.getAttribute("loginUser");
+        if(loginUser == null) return "redirect:/login";
+        Board board = boardService.findById(id);
+        if(!board.getWriter().getId().equals(loginUser.getId()))
+            return "redirect:/boards?error=unauthorized";
+        model.addAttribute("board", board);
+        return "board-edit";
+    }
 
+    @PostMapping("/boards/edit/{id}")
+    public String edit(@PathVariable Long id, HttpSession session, BoardDTO dto){
+        Member loginUser =(Member)session.getAttribute("loginUser");
+        if(loginUser == null) return "redirect:/login";
+        Board board = boardService.findById(id);
+        if(!board.getWriter().getId().equals(loginUser.getId()))
+            return "redirect:/boards?error=unauthorized";
+        boardService.update(id, dto);
+        return "redirect:/boards";
+    }
 
+    @GetMapping("/boards/delete/{id}")
+    public String delete(@PathVariable Long id, HttpSession session){
+        Member loginUser =(Member)session.getAttribute("loginUser");
+        if(loginUser == null) return "redirect:/login";
+        Board board = boardService.findById(id);
+        if(!board.getWriter().getId().equals(loginUser.getId()))
+            return "redirect:/boards?error=unauthorized";
+        boardService.delete(id);
+        return "redirect:/boards";
+    }
 }
