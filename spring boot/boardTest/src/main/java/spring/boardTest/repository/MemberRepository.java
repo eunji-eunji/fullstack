@@ -1,7 +1,8 @@
 package spring.boardTest.repository;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import spring.boardTest.domain.Member;
 
-@Repository
-public class MemberRepository {
+public interface MemberRepository extends JpaRepository<Member, Long> {
+
 }
