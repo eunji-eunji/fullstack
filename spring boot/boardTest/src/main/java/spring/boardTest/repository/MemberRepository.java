@@ -5,4 +5,5 @@ import spring.boardTest.domain.Member;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
+    Member findByMemberId(String memberId);
 }

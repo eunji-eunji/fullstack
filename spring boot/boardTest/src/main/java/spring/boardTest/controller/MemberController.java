@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import spring.boardTest.domain.Member;
@@ -40,5 +41,36 @@ public class MemberController {
             return "member/addMember";
         }
         return "redirect:/members";
+    }
+
+    @GetMapping("/update/{memberId}")
+    public String requestUpdateMember(@PathVariable(name = "memberId") String memberId, Model model){
+        Member member=memberService.getMemberById(memberId);
+        model.addAttribute("member",member);
+        return "member/updateMember";
+    }
+
+    @PostMapping("/update")
+    public String submitUpdateMember(@Valid MemberDto memberDto, BindingResult bindingResult, Model model){
+        if(bindingResult.hasErrors())
+            return "member/updateMember";
+        try{
+            memberService.updateMember(memberDto);
+        }catch(IllegalStateException e){
+            model.addAttribute("errorMessage", e.getMessage());
+            return "member/updateMember";
+        }
+        return "redirect:/members";
+    }
+
+    @GetMapping("/delete/{memberId}")
+    public String deleteMember(@PathVariable(name = "memberId") String memberId){
+        memberService.deleteMember(memberId);
+        return "redirect:/logout";
+    }
+
+    @GetMapping
+    public String requestMain(){
+        return "redirect:/";
     }
 }

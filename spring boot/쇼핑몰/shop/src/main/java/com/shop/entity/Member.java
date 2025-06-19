@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Entity
 @Table(name="member")
 @Data
-public class Member {
+public class Member extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

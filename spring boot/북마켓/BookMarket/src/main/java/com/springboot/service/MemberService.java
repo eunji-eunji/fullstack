@@ -52,6 +52,15 @@ public class MemberService implements UserDetailsService {
 //        return memberRepository.save(member);
 //    }
 
+    // 2번 방법
+    public void updateMember(@Valid MemberFormDto dto) {
+        Member member = memberRepository.findByMemberId(dto.getMemberId());
+        if(member==null)
+            throw new IllegalStateException("존재하지 않는 회원입니다.");
+        member.updateFromDto(dto, passwordEncoder);
+        // memberRepository.save(member);
+    }
+
     // 인증회원 정보 가져오기
     @Override
     public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
@@ -70,11 +79,5 @@ public class MemberService implements UserDetailsService {
                 .build();
     }
 
-    public void updateMember(@Valid MemberFormDto dto) {
-        Member member = memberRepository.findByMemberId(dto.getMemberId());
-        if(member==null)
-            throw new IllegalStateException("존재하지 않는 회원입니다.");
-        member.updateFromDto(dto, passwordEncoder);
-        // memberRepository.save(member);
-    }
+
 }

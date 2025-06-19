@@ -77,7 +77,7 @@ public class MemberController {
     }
 
     @GetMapping
-    public String requestMain(){
+    public String requestMain() {
         return "redirect:/";
     }
 

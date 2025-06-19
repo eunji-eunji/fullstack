@@ -1,6 +1,7 @@
 package com.shop.dto;
 
 import com.shop.constant.ItemSellStatus;
+import com.shop.entity.ItemImg;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -14,4 +15,6 @@ public class ItemDto {
     private ItemSellStatus itemSellStatus;
     private LocalDateTime regTime;
     private LocalDateTime updateTime;
+
+
 }

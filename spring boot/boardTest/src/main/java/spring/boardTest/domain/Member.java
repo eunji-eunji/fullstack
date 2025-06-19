@@ -32,4 +32,14 @@ public class Member {
                 .name(dto.getName()).phone(dto.getPhone()).email(dto.getEmail()).address(dto.getAddress())
                 .role(Role.USER).build();
     }
+
+    // id, memberId, name은 변경 불가
+    public void updateFromDto(@Valid MemberDto memberDto, PasswordEncoder passwordEncoder) {
+        this.phone=memberDto.getPhone();
+        this.email=memberDto.getEmail();
+        this.address=memberDto.getAddress();
+        // memberDto password가 비어 있지 않으면
+        if(memberDto.getPassword() != null && !memberDto.getPassword().isBlank())
+            this.password=passwordEncoder.encode(memberDto.getPassword());
+    }
 }

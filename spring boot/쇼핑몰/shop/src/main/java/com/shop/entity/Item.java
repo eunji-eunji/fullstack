@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name="item")
 @Data
-public class Item {
+public class Item extends BaseEntity {
     @Id
     @Column(name="item_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +23,17 @@ public class Item {
     @Lob
     @Column(nullable = false)
     private String itemDetail;
+    @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus;
-    private LocalDateTime regTime;
-    private LocalDateTime updateTime;
+
+    public void removeStock(int stockNumber) {
+        int restStock=this.stockNumber-stockNumber;
+        if(restStock<0) {
+            //throw new OutOfStockException("상품의 재고가 부족합니다. (현재 재고 수량: "+this.stockNumber+")");
+        }
+        this.stockNumber=restStock;
+    }
+    public void addStock(int stockNumber){
+        this.stockNumber+=stockNumber;
+    }
 }
