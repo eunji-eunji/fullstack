@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.springboot.interceptor.AuditingInterceptor;
 import com.springboot.interceptor.MonitoringInterceptor;
 
-
+// 로그 남기는 설정
 @Configuration
 public class LoggingConfig implements WebMvcConfigurer {
 	

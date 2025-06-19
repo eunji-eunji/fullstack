@@ -15,6 +15,7 @@ import spring.boardTest.domain.Member;
 import spring.boardTest.domain.MemberDto;
 import spring.boardTest.service.MemberService;
 
+
 @Controller
 @RequestMapping(value = "/board")
 public class MemberController {

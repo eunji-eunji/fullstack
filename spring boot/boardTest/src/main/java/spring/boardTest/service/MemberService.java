@@ -3,10 +3,11 @@ package spring.boardTest.service;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 import spring.boardTest.domain.Member;
 import spring.boardTest.domain.MemberDto;
 import spring.boardTest.repository.MemberRepository;
-
+@Service
 public class MemberService {
     @Autowired
     private MemberRepository memberRepository;
