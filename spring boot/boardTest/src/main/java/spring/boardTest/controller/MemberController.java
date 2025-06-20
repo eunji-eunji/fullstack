@@ -17,7 +17,7 @@ import spring.boardTest.service.MemberService;
 
 
 @Controller
-@RequestMapping(value = "/board")
+@RequestMapping(value = "/members")
 public class MemberController {
     @Autowired
     private MemberService memberService;

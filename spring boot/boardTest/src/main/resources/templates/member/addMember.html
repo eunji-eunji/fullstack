@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
-  <link href="/boardTest/css/bootstrap.min.css" rel="stylesheet" >
+  <link href="/boardTest/css/bootstrap.min.css" rel="stylesheet">
   <script>
     function checkPasswd(){
         if(document.member.password.value != document.member.password_confirm.value){
@@ -28,7 +28,7 @@
     <div class="alert alert-danger" th:if="${errorMessage!=null}" >
       [[${errorMessage}]]<br />
     </div>
-    <form action="/board/members/add" method="post" th:object="${memberDto}" name="member">
+    <form action="/members/add" method="post" th:object="${memberDto}" name="member">
       <legend>신규 회원 가입</legend>
       <div class="mb-3 row">
         <label class="col-sm-2 control-label">회원 아이디</label>

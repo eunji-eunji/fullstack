@@ -25,8 +25,6 @@ public class BoardController {
         return "board-write";
     }
 
-
-
     @PostMapping("/boards/write")
     public String write(@ModelAttribute BoardDTO dto, HttpSession session) throws IOException {
         Member writer = (Member) session.getAttribute("loginUser");
