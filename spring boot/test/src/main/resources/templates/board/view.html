@@ -1,0 +1,62 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>게시글</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container py-4">
+    <th:block th:replace="~{/module/header}"></th:block>
+    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">게시글</h1>
+            <p class="col-md-8 fs-4">Spring Boot</p>
+        </div>
+
+    </div>
+    <div class="row align-items-md-stretch">
+        <form action="/spring/board/update" method="post" th:object="${boardFormDto}">
+            <input type="hidden" name="id" class="form-control" th:field="*{id}"/>
+            <input type="hidden" name="writerid" class="form-control" th:field="*{writerid}"/>
+
+            <div class="mb-3 row">
+                <label class="col-sm-2 control-label">제목</label>
+                <div class="col-sm-3">
+                    <p th:text="*{title}"></p>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-2 control-label">작성자</label>
+                <div class="col-sm-3">
+                    <p th:text="*{writer}"></p>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 control-label">내용</label>
+                <div class="col-sm-5">
+                    <p th:text="*{content}"></p>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-2 control-label">이미지 파일</label>
+                <div class="col-sm-5">
+                    <img th:if="${board.imagePath}" th:src="@{${board.imagePath}}" width="200"/>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col-sm-offset-2 col-sm-10" >
+                    <a href="/spring/board/list" class="btn btn-primary">목록</a>
+                    <input class="btn btn-success" type="submit" role="button" value="수정" />
+                    <a th:if="${buttonOk==true}" th:href="@{'/board/delete/'+${id}}" class="btn btn-danger">삭제</a>
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <th:block th:replace="~{/module/footer}"></th:block>
+</div>
+</body>
+</html>
