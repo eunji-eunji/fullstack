@@ -4,6 +4,8 @@ package springboot.test.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import springboot.test.domain.Board;
 
-public interface BoardRepository extends JpaRepository<Board, Long> {
+import java.util.List;
 
+public interface BoardRepository extends JpaRepository<Board, Long> {
+    List<Board> findAll();
 }

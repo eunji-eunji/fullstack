@@ -1,11 +1,16 @@
 package com.shop.controller;
 
 import com.shop.dto.ItemFormDto;
+import com.shop.dto.ItemSearchDto;
+import com.shop.entity.Item;
 import com.shop.service.ItemService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.engine.jdbc.mutation.spi.BindingGroup;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -73,5 +79,27 @@ public class ItemController {
             return "item/itemForm";
         }
         return "redirect:/";
+    }
+
+    // 처음 접근하거나 페이지 번호가 있는 요청 두 개
+    @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
+    public String itemManage(ItemSearchDto itemSearchDto,
+                             @PathVariable("page") Optional<Integer> page, Model model){
+        // 페이지 번호가 없을 수도 있으므로 Optional로 받음
+        Pageable pageable= PageRequest.of(page.isPresent() ? page.get() : 0, 3);
+        // 페이지 번호가 있으면 받고, 없으면 0번 한 페이지에 3개씩
+        Page<Item> items = itemService.getAdminItemPage(itemSearchDto, pageable);
+        // 검색 조건 itemSearchDto와 페이지 정보를 전달하여 상품 목록 조회
+        model.addAttribute("items",items);
+        model.addAttribute("itemSearchDto", itemSearchDto);
+        model.addAttribute("maxPage", 5);
+        return "item/itemMng";
+    }
+
+    @GetMapping(value = "/item/{itemId}")
+    public String itemDtl1(Model model, @PathVariable("itemId") Long itemId){
+        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+        model.addAttribute("item", itemFormDto);
+        return "item/itemDtl";
     }
 }

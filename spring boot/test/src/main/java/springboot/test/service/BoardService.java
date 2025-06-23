@@ -2,65 +2,85 @@ package springboot.test.service;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import springboot.test.domain.Board;
 import springboot.test.domain.BoardFormDto;
+import springboot.test.domain.Member;
 import springboot.test.repository.BoardRepository;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class BoardService {
     @Autowired
     private BoardRepository boardRepository;
+    @Value("${upload.dir}")
+    private String uploadDir;
 
-    @Transactional
-    public Long savePost(BoardFormDto boardDto){
-        return boardRepository.save(boardDto.toEntity()).getId();
+
+    public List<Board> list() {
+        return boardRepository.findAll();
     }
 
-    @Transactional
-    public List<BoardFormDto> getBoardList(){
-        List<Board> boardList = boardRepository.findAll();
-        List<BoardFormDto> boardDtoList = new ArrayList<>();
-        for(Board board : boardList){
-            BoardFormDto boardDto = BoardFormDto.builder().id(board.getId()).writerid(board.getWriterid())
-                    .writer(board.getWriter()).title(board.getTitle()).content(board.getContent())
-                    .imagePath(board.getImagePath()).createdDate(board.getCreatedDate()).build();
-            boardDtoList.add(boardDto);
+    public void create(BoardFormDto dto, Member writer) throws IOException {
+        Board board = new Board();
+        board.setTitle(dto.getTitle());
+        board.setContent(dto.getContent());
+        board.setWriter(writer);
+
+        if (!dto.getImagePath().isEmpty()) {
+            // 1. 파일 이름 생성(UUID를 이용하여 랜덤한 파일명 생성)
+            String filename = UUID.randomUUID() + "_" + dto.getImagePath().getOriginalFilename();
+            // 2. 저장한 경로 생성(uploadDir : application.properties에서 설정한 경로)
+            Path path = Paths.get(uploadDir, filename);
+            // 3. 디렉토리가 없으면 생성
+            Files.createDirectories(path.getParent());
+            // 4. 실제 이미지 저장
+            Files.copy(dto.getImagePath().getInputStream(), path);
+            // 5. DB에 저장할 이미지 경로 설정
+            board.setImagePath("/uploads/" + filename);
         }
-        return boardDtoList;
+        boardRepository.save(board);
+    }
+    public Board findById(Long id) {
+        return boardRepository.findById(id).orElseThrow();
     }
 
-    // 아이디로 찾기
-    public Board getBoardById(Long id){
-        Board board = boardRepository.findById(id).get();
-        return board;
+    public void update(Long id, BoardFormDto dto, MultipartFile imageFile) throws IOException {
+        Board board = boardRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
+        board.setTitle(dto.getTitle());
+        board.setContent(dto.getContent());
+        // 이미지가 새로 업로드된 경우
+        if (imageFile != null && !imageFile.isEmpty()) {
+            // 기존 이미지 삭제 (선택 사항)
+            if (board.getImagePath() != null) {
+                File oldFile = new File(uploadDir, board.getImagePath());
+                if (oldFile.exists()) oldFile.delete();
+            }
+
+            // 새 파일 저장
+            String originalFilename = imageFile.getOriginalFilename();
+            String newFilename = UUID.randomUUID() + "_" + originalFilename;
+            File dest = new File(uploadDir + File.separator + newFilename);
+            imageFile.transferTo(dest);
+
+            board.setImagePath(newFilename);
+        }
+        boardRepository.save(board);
     }
 
     // 삭제하기
     public void deleteBoardById(Long id){
         boardRepository.deleteById(id);
-    }
-
-//    public Page<Board> listAll(int pageNum, String sortField, String sortDir){
-//        int pageSize = 5;
-//        Pageable pageable = PageRequest.of(pageNum-1, pageSize, sortDir.equals("asc")?
-//                Sort.by(sortField).ascending() : Sort.by(sortField).descending());
-//        return boardRepository.findAll(pageable);
-//        // pageNum : 요청하는 페이지 번호(1부터 시작)
-//        // sortField : 정렬한 컬럼명
-//        // sortDir : 정렬 방향. asc, desc
-//        // pageRequest.of : 페이지 요청정보를 만들는 메서드
-//        // pageNum-1 : data jpa는 0부터 페이지번호를 계산하기 때문에 pageNum에서 1을 뺌
-//        // pageNum -1  : data jpa 0부터 페이지번호 셈해서 pageNum 에서 1을 뺌
-//        // pageSize : 한 페이지에 몇 개의 항목을 가져올지
-//        // Sort.by(sortField) :   sortField 기준정렬
-//        // sortDir.equals("asc") 체크 후 오름차순인지 내림차순인지 설정
-//    }
-
-    public List<Board> list() {
-        return boardRepository.findAll();
     }
 }

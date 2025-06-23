@@ -71,9 +71,6 @@ public class BoardController {
         return "redirect:/boards";
     }
 
-
-
-
     @GetMapping("/boards/edit/{id}")
     public String editform(@PathVariable Long id, HttpSession session, Model model){
         Member loginUser = (Member) session.getAttribute("loginUser");

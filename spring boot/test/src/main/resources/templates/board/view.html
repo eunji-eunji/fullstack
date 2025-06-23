@@ -15,9 +15,10 @@
 
     </div>
     <div class="row align-items-md-stretch">
-        <form action="/spring/board/update" method="post" th:object="${boardFormDto}">
+        <form th:action="@{'/board/update/'+${boardDto.id}}" method="post" th:object="${boardDto}">
             <input type="hidden" name="id" class="form-control" th:field="*{id}"/>
             <input type="hidden" name="writerid" class="form-control" th:field="*{writerid}"/>
+            <input type="hidden" th:field="*{imagePath}" />
 
             <div class="mb-3 row">
                 <label class="col-sm-2 control-label">제목</label>
@@ -42,18 +43,19 @@
             <div class="mb-3 row">
                 <label class="col-sm-2 control-label">이미지 파일</label>
                 <div class="col-sm-5">
-                    <img th:if="${board.imagePath}" th:src="@{${board.imagePath}}" width="200"/>
+                    <img th:if="${boardDto.imagePath}" th:src="@{'/board/images/' + ${boardDto.imagePath}}" width="200"/>
                 </div>
             </div>
 
+            <!-- 버튼 영역 -->
             <div class="mb-3 row">
-                <div class="col-sm-offset-2 col-sm-10" >
-                    <a href="/spring/board/list" class="btn btn-primary">목록</a>
-                    <input class="btn btn-success" type="submit" role="button" value="수정" />
-                    <a th:if="${buttonOk==true}" th:href="@{'/board/delete/'+${id}}" class="btn btn-danger">삭제</a>
-
+                <div class="col-sm-offset-2 col-sm-10">
+                    <a th:href="@{/board/list}" class="btn btn-primary">목록</a>
+                    <a th:if="${buttonOk}" th:href="@{'/board/edit/' + ${boardDto.id}}" class="btn btn-warning">수정</a>
+                    <a th:if="${buttonOk}" th:href="@{'/board/delete/' + ${boardDto.id}}" class="btn btn-danger">삭제</a>
                 </div>
             </div>
+
         </form>
     </div>
     <th:block th:replace="~{/module/footer}"></th:block>

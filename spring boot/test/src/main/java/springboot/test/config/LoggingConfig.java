@@ -1,22 +1,22 @@
-package springboot.test.config;
-
-
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import springboot.test.interceptor.AuditingInterceptor;
-import springboot.test.interceptor.MonitoringInterceptor;
-
-// 로그 남기는 설정
-@Configuration
-public class LoggingConfig implements WebMvcConfigurer {
-	
-	@Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new MonitoringInterceptor());
-       registry.addInterceptor(new AuditingInterceptor());
-     //   .excludePathPatterns("/BookMarket/css/**", "/BookMarket/images/**", "/js/**");
-      
-    }
-
-}
+//package springboot.test.config;
+//
+//
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+//import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+//import springboot.test.interceptor.AuditingInterceptor;
+//import springboot.test.interceptor.MonitoringInterceptor;
+//
+//// 로그 남기는 설정
+//@Configuration
+//public class LoggingConfig implements WebMvcConfigurer {
+//
+//	@Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(new MonitoringInterceptor());
+//       registry.addInterceptor(new AuditingInterceptor());
+//     //   .excludePathPatterns("/BookMarket/css/**", "/BookMarket/images/**", "/js/**");
+//
+//    }
+//
+//}

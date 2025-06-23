@@ -29,9 +29,6 @@ public class FormController {
         // 회원 정보 조회
         Member member=memberService.getMemberById(userId);
 
-        // 세션을 생성하기 전에 기존의 세션 파기
-        //httpServletRequest.getSession().invalidate();
-
         // 세션 새로 생성(필요 시)
         HttpSession session = httpServletRequest.getSession(true);
         session.setAttribute("userLoginInfo", member);
