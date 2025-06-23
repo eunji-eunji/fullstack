@@ -55,29 +55,22 @@ public class BoardService {
         return boardRepository.findById(id).orElseThrow();
     }
 
-    public void update(Long id, BoardFormDto dto, MultipartFile imageFile) throws IOException {
+    public void update(Long id, BoardFormDto dto) throws IOException {
         Board board = boardRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
         board.setTitle(dto.getTitle());
         board.setContent(dto.getContent());
         // 이미지가 새로 업로드된 경우
-        if (imageFile != null && !imageFile.isEmpty()) {
-            // 기존 이미지 삭제 (선택 사항)
-            if (board.getImagePath() != null) {
-                File oldFile = new File(uploadDir, board.getImagePath());
-                if (oldFile.exists()) oldFile.delete();
-            }
-
-            // 새 파일 저장
-            String originalFilename = imageFile.getOriginalFilename();
-            String newFilename = UUID.randomUUID() + "_" + originalFilename;
-            File dest = new File(uploadDir + File.separator + newFilename);
-            imageFile.transferTo(dest);
-
-            board.setImagePath(newFilename);
+        if (!dto.getImagePath().isEmpty()) {
+            String filename = UUID.randomUUID() + "_" + dto.getImagePath().getOriginalFilename();
+            Path path = Paths.get(uploadDir, filename);
+            Files.createDirectories(path.getParent());
+            Files.copy(dto.getImagePath().getInputStream(), path);
+            board.setImagePath("/uploads/" + filename);
         }
         boardRepository.save(board);
     }
+
 
     // 삭제하기
     public void deleteBoardById(Long id){

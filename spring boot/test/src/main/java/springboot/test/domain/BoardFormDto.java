@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public class BoardFormDto {
     private Long id;
     private String writerid;
-//    private Member writer;
+    private Member writer;
     private String title;
     private String content;
     private MultipartFile imagePath;

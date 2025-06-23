@@ -3,24 +3,15 @@ package springboot.test.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import springboot.test.domain.Board;
 import springboot.test.domain.BoardFormDto;
 import springboot.test.domain.Member;
 import springboot.test.service.BoardService;
-
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @Controller
 @RequestMapping(value = "/board")
@@ -67,7 +58,7 @@ public class BoardController {
     }
 
     // 게시글 수정 폼
-    @GetMapping("/edit/{id}")
+    @GetMapping("/update/{id}")
     public String editPostForm(@PathVariable Long id, HttpServletRequest request, Model model) {
         Board board = boardService.findById(id);
         model.addAttribute("boardDto", board);
@@ -85,9 +76,8 @@ public class BoardController {
 
     // 게시글 수정 처리
     @PostMapping("/update/{id}")
-    public String updatePost(@PathVariable Long id, @ModelAttribute BoardFormDto boardDto,
-            @RequestParam(value = "imagePath", required = false) MultipartFile imageFile) throws IOException {
-        boardService.update(id, boardDto, imageFile);
+    public String updatePost(@PathVariable Long id, @ModelAttribute BoardFormDto boardDto) throws IOException {
+        boardService.update(id, boardDto);
         return "redirect:/board/view/" + id;
     }
 
